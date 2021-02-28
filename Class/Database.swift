@@ -14,18 +14,32 @@ final class Database {
         getSchedulesData()
     }
     
-    func setScheduleData(_ helloschedule: Schedule){
+    var plans: [Plan] {
+        getPlansData()
+    }
+    
+    func setScheduleData(_ helloSchedule: Schedule) {
         //newschedulesにいああるデータを移行
         var newSchedules = schedules
         //引数のhelloscheduleがデータに既に存在していたら
-        if let index = newSchedules.firstIndex(where: { return $0.id == helloschedule.id }) {
+        if let index = newSchedules.firstIndex(where: { return $0.id == helloSchedule.id }) {
             //そのスケジュールを変更
-            newSchedules[index] = helloschedule
+            newSchedules[index] = helloSchedule
         } else {
             //そのスケジュールを追加
-            newSchedules.append(helloschedule)
+            newSchedules.append(helloSchedule)
         }
         setSchedulesData(newSchedules)
+    }
+    
+    func setPlanData(_ helloPlan: Plan) {
+        var newPlans = plans
+        if let index = newPlans.firstIndex(where: { return $0.id == helloPlan.id}) {
+            newPlans[index] = helloPlan
+        } else {
+            newPlans.append(helloPlan)
+        }
+        setPlansData(newPlans)
     }
     
 }
@@ -40,10 +54,23 @@ extension Database {
         
     }
     
-    private func setSchedulesData(_ schedules: [Schedule]) {
+    private func setSchedulesData(_ Schedules: [Schedule]) {
         let encodedSchedulesData = schedules.map{ try? JSONEncoder().encode($0) }
         UserDefaults.standard.register(defaults: ["schedules": encodedSchedulesData])
     }
+    
+    private func getPlansData() -> [Plan] {
+        guard let items = UserDefaults.standard.array(forKey: "plans") as? [Data] else { return[] }
+        let decodedItems = items.map { try! JSONDecoder().decode(Plan.self, from: $0) }
+        return decodedItems
+        
+    }
+    
+    private func setPlansData(_ plans: [Plan]) {
+        let encodedPlansData = plans.map{ try? JSONEncoder().encode($0) }
+        UserDefaults.standard.register(defaults: ["plans": encodedPlansData])
+    }
+    
 }
 
 

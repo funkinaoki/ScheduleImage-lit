@@ -25,6 +25,7 @@
 		CCEBAD0225EA6BBB0028BAD5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */; };
 		CCEBAD0725EA6E690028BAD5 /* DateUtills.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBAD0625EA6E690028BAD5 /* DateUtills.swift */; };
 		CCEBAD0C25EA8B1C0028BAD5 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBAD0B25EA8B1C0028BAD5 /* Database.swift */; };
+		CCEBAD1125EB5E4F0028BAD5 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBAD1025EB5E4F0028BAD5 /* Plan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CCEBAD0625EA6E690028BAD5 /* DateUtills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtills.swift; sourceTree = "<group>"; };
 		CCEBAD0B25EA8B1C0028BAD5 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		CCEBAD1025EB5E4F0028BAD5 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				CCEBACF925EA42B70028BAD5 /* Schedule.swift */,
 				CCEBAD0625EA6E690028BAD5 /* DateUtills.swift */,
 				CCEBAD0B25EA8B1C0028BAD5 /* Database.swift */,
+				CCEBAD1025EB5E4F0028BAD5 /* Plan.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */,
 				CC4A00CB25E8FAD7009D1AC9 /* AppDelegate.swift in Sources */,
 				CCEBACFA25EA42B70028BAD5 /* Schedule.swift in Sources */,
+				CCEBAD1125EB5E4F0028BAD5 /* Plan.swift in Sources */,
 				CC4A00D525E8FAD7009D1AC9 /* ScheduleImage.xcdatamodeld in Sources */,
 				CCEBAD0725EA6E690028BAD5 /* DateUtills.swift in Sources */,
 				CCEBAD0C25EA8B1C0028BAD5 /* Database.swift in Sources */,

@@ -67,7 +67,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="0Rn-S1-kan" id="5Vx-Y1-d81"/>
-                        <segue destination="HEL-gV-QgW" kind="show" identifier="toDetail" id="N5P-HC-OVT"/>
+                        <segue destination="HEL-gV-QgW" kind="show" identifier="toDetailView" id="N5P-HC-OVT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpu-yr-NJD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -208,14 +208,67 @@
                     <view key="view" contentMode="scaleToFill" id="781-az-zvo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="X5C-tP-sVb">
+                                <rect key="frame" x="67" y="755" width="280" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNR-fv-Nwc">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="48"/>
+                                        <inset key="titleEdgeInsets" minX="-57" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-30" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="保存・共有" image="download">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uD-lo-mU8">
+                                        <rect key="frame" x="140" y="0.0" width="140" height="48"/>
+                                        <inset key="titleEdgeInsets" minX="-57" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-30" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="予定を追加" image="plus">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2020/10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEg-9y-CcU">
+                                <rect key="frame" x="308" y="389" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0UZ-4e-H5g">
+                                <rect key="frame" x="44" y="426" width="332" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2020/10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cR5-Ri-TmV">
+                                <rect key="frame" x="20" y="389" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="x5u-Fz-ZCP"/>
                         <color key="backgroundColor" red="0.94117647410000005" green="0.87843137979999997" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="X5C-tP-sVb" secondAttribute="trailing" constant="67" id="Rvm-Ot-ID0"/>
+                            <constraint firstItem="X5C-tP-sVb" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="67" id="Vca-ev-Lzr"/>
+                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="bottom" secondItem="X5C-tP-sVb" secondAttribute="bottom" constant="59" id="jpE-Kp-H3Z"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JDU-0c-2Hm"/>
+                    <connections>
+                        <outlet property="endPoint" destination="ZEg-9y-CcU" id="cok-Ed-CLJ"/>
+                        <outlet property="plus" destination="6uD-lo-mU8" id="tQi-6Q-uuL"/>
+                        <outlet property="saveandShare" destination="tNR-fv-Nwc" id="UzX-KG-FZD"/>
+                        <outlet property="startPoint" destination="cR5-Ri-TmV" id="fBN-RA-6Ep"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liC-eB-HSA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="852"/>
+            <point key="canvasLocation" x="1413.0434782608697" y="851.78571428571422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xmQ-0x-YSk">
@@ -342,6 +395,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="download" width="48" height="48"/>
+        <image name="plus" width="48" height="48"/>
         <image name="pointImage" width="99" height="99"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

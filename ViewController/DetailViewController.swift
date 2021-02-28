@@ -8,7 +8,14 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var startPoint: UILabel!
+    @IBOutlet weak var endPoint: UILabel!
+    @IBOutlet weak var plus: UIButton!
+    @IBOutlet weak var saveandShare: UIButton!
+    
+    var detailSchedule: Schedule!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
