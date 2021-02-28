@@ -28,6 +28,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        database = Database()
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return database.schedules.count
     }

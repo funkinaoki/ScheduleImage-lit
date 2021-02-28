@@ -47,14 +47,13 @@ final class Database {
 extension Database {
     private func getSchedulesData() -> [Schedule] {
         guard let items = UserDefaults.standard.array(forKey: "schedules") as? [Data] else { return[] }
-        
         let decodedItems = items.map { try! JSONDecoder().decode(Schedule.self, from: $0) }
         print(decodedItems)
         return decodedItems
         
     }
     
-    private func setSchedulesData(_ Schedules: [Schedule]) {
+    private func setSchedulesData(_ schedules: [Schedule]) {
         let encodedSchedulesData = schedules.map{ try? JSONEncoder().encode($0) }
         UserDefaults.standard.register(defaults: ["schedules": encodedSchedulesData])
     }
