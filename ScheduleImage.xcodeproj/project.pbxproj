@@ -9,13 +9,22 @@
 /* Begin PBXBuildFile section */
 		CC4A00CB25E8FAD7009D1AC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00CA25E8FAD7009D1AC9 /* AppDelegate.swift */; };
 		CC4A00CD25E8FAD7009D1AC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00CC25E8FAD7009D1AC9 /* SceneDelegate.swift */; };
-		CC4A00CF25E8FAD7009D1AC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00CE25E8FAD7009D1AC9 /* ViewController.swift */; };
 		CC4A00D225E8FAD7009D1AC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4A00D025E8FAD7009D1AC9 /* Main.storyboard */; };
 		CC4A00D525E8FAD7009D1AC9 /* ScheduleImage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00D325E8FAD7009D1AC9 /* ScheduleImage.xcdatamodeld */; };
 		CC4A00D725E8FAD9009D1AC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4A00D625E8FAD9009D1AC9 /* Assets.xcassets */; };
 		CC4A00DA25E8FAD9009D1AC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4A00D825E8FAD9009D1AC9 /* LaunchScreen.storyboard */; };
 		CC4A00E525E8FAD9009D1AC9 /* ScheduleImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00E425E8FAD9009D1AC9 /* ScheduleImageTests.swift */; };
 		CC4A00F025E8FAD9009D1AC9 /* ScheduleImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00EF25E8FAD9009D1AC9 /* ScheduleImageUITests.swift */; };
+		CC4A011325E901D0009D1AC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A011025E901D0009D1AC9 /* ViewController.swift */; };
+		CC4A011425E901D0009D1AC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A011125E901D0009D1AC9 /* MainViewController.swift */; };
+		CC4A011525E901D0009D1AC9 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A011225E901D0009D1AC9 /* CreateViewController.swift */; };
+		CC4A011A25E901E7009D1AC9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A011925E901E7009D1AC9 /* DetailViewController.swift */; };
+		CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */; };
+		CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */; };
+		CCEBACFA25EA42B70028BAD5 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF925EA42B70028BAD5 /* Schedule.swift */; };
+		CCEBAD0225EA6BBB0028BAD5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */; };
+		CCEBAD0725EA6E690028BAD5 /* DateUtills.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBAD0625EA6E690028BAD5 /* DateUtills.swift */; };
+		CCEBAD0C25EA8B1C0028BAD5 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBAD0B25EA8B1C0028BAD5 /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +48,6 @@
 		CC4A00C725E8FAD7009D1AC9 /* ScheduleImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScheduleImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4A00CA25E8FAD7009D1AC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4A00CC25E8FAD7009D1AC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CC4A00CE25E8FAD7009D1AC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CC4A00D125E8FAD7009D1AC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC4A00D425E8FAD7009D1AC9 /* ScheduleImage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScheduleImage.xcdatamodel; sourceTree = "<group>"; };
 		CC4A00D625E8FAD9009D1AC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +59,16 @@
 		CC4A00EB25E8FAD9009D1AC9 /* ScheduleImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScheduleImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4A00EF25E8FAD9009D1AC9 /* ScheduleImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleImageUITests.swift; sourceTree = "<group>"; };
 		CC4A00F125E8FAD9009D1AC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC4A011025E901D0009D1AC9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC4A011125E901D0009D1AC9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CC4A011225E901D0009D1AC9 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		CC4A011925E901E7009D1AC9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
+		CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
+		CCEBACF925EA42B70028BAD5 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		CCEBAD0625EA6E690028BAD5 /* DateUtills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtills.swift; sourceTree = "<group>"; };
+		CCEBAD0B25EA8B1C0028BAD5 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +100,11 @@
 			isa = PBXGroup;
 			children = (
 				CC4A00C925E8FAD7009D1AC9 /* ScheduleImage */,
-				CC4A00E325E8FAD9009D1AC9 /* ScheduleImageTests */,
+				CC4A010F25E901D0009D1AC9 /* ViewController */,
+				CCEBACF825EA42A60028BAD5 /* Class */,
+				CC4A012125E9489F009D1AC9 /* Storyboard */,
 				CC4A00EE25E8FAD9009D1AC9 /* ScheduleImageUITests */,
+				CC4A00E325E8FAD9009D1AC9 /* ScheduleImageTests */,
 				CC4A00C825E8FAD7009D1AC9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,8 +124,6 @@
 			children = (
 				CC4A00CA25E8FAD7009D1AC9 /* AppDelegate.swift */,
 				CC4A00CC25E8FAD7009D1AC9 /* SceneDelegate.swift */,
-				CC4A00CE25E8FAD7009D1AC9 /* ViewController.swift */,
-				CC4A00D025E8FAD7009D1AC9 /* Main.storyboard */,
 				CC4A00D625E8FAD9009D1AC9 /* Assets.xcassets */,
 				CC4A00D825E8FAD9009D1AC9 /* LaunchScreen.storyboard */,
 				CC4A00DB25E8FAD9009D1AC9 /* Info.plist */,
@@ -129,6 +148,38 @@
 				CC4A00F125E8FAD9009D1AC9 /* Info.plist */,
 			);
 			path = ScheduleImageUITests;
+			sourceTree = "<group>";
+		};
+		CC4A010F25E901D0009D1AC9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A011025E901D0009D1AC9 /* ViewController.swift */,
+				CC4A011125E901D0009D1AC9 /* MainViewController.swift */,
+				CC4A011225E901D0009D1AC9 /* CreateViewController.swift */,
+				CC4A011925E901E7009D1AC9 /* DetailViewController.swift */,
+				CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CC4A012125E9489F009D1AC9 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A00D025E8FAD7009D1AC9 /* Main.storyboard */,
+				CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */,
+				CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		CCEBACF825EA42A60028BAD5 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				CCEBACF925EA42B70028BAD5 /* Schedule.swift */,
+				CCEBAD0625EA6E690028BAD5 /* DateUtills.swift */,
+				CCEBAD0B25EA8B1C0028BAD5 /* Database.swift */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4A00DA25E8FAD9009D1AC9 /* LaunchScreen.storyboard in Resources */,
+				CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */,
 				CC4A00D725E8FAD9009D1AC9 /* Assets.xcassets in Resources */,
 				CC4A00D225E8FAD7009D1AC9 /* Main.storyboard in Resources */,
 			);
@@ -261,10 +313,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC4A00CF25E8FAD7009D1AC9 /* ViewController.swift in Sources */,
+				CC4A011525E901D0009D1AC9 /* CreateViewController.swift in Sources */,
+				CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */,
 				CC4A00CB25E8FAD7009D1AC9 /* AppDelegate.swift in Sources */,
+				CCEBACFA25EA42B70028BAD5 /* Schedule.swift in Sources */,
 				CC4A00D525E8FAD7009D1AC9 /* ScheduleImage.xcdatamodeld in Sources */,
+				CCEBAD0725EA6E690028BAD5 /* DateUtills.swift in Sources */,
+				CCEBAD0C25EA8B1C0028BAD5 /* Database.swift in Sources */,
+				CCEBAD0225EA6BBB0028BAD5 /* ResultViewController.swift in Sources */,
 				CC4A00CD25E8FAD7009D1AC9 /* SceneDelegate.swift in Sources */,
+				CC4A011425E901D0009D1AC9 /* MainViewController.swift in Sources */,
+				CC4A011325E901D0009D1AC9 /* ViewController.swift in Sources */,
+				CC4A011A25E901E7009D1AC9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
