@@ -1,14 +1,14 @@
 //
-//  ResultViewController.swift
+//  ResultPlanViewController.swift
 //  ScheduleImage
 //
-//  Created by 八幡尚希 on 2021/02/27.
+//  Created by 八幡尚希 on 2021/02/28.
 //
 
 import UIKit
 
-class ResultViewController: UIViewController {
-    
+class ResultPlanViewController: UIViewController {
+
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -16,7 +16,7 @@ class ResultViewController: UIViewController {
     
     var startPoint: String!
     var endPoint: String!
-
+    var detailSchedule: Schedule!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +30,14 @@ class ResultViewController: UIViewController {
     
     @IBAction func create(_ sender: Any) {
         if nameTextField.text != "" {
-            let newSchedule = Schedule(name: nameTextField.text, startPoint: startPoint, endPoint: endPoint)
-            newSchedule.save()
+            let newPlan = Plan(name: nameTextField.text, startPoint: startPoint, endPoint: endPoint, scheduleID: detailSchedule.id )
+            newPlan.save()
             self.dismiss(animated: true, completion: nil)
         }
     }
+
     
+
+   
+
 }

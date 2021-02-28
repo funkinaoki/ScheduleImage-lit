@@ -11,6 +11,7 @@ class ScheduleViewCell: UITableViewCell {
     
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var database: Database!
     
@@ -28,6 +29,7 @@ class ScheduleViewCell: UITableViewCell {
     func setCell(schedule: Schedule){
         self.startPointLabel.text = schedule.startPoint as String
         self.endPointLabel.text = schedule.endPoint as String
+        self.nameLabel.text = "”" + schedule.name + "”" as String
     }
     
 }

@@ -19,6 +19,10 @@
 		CC4A011425E901D0009D1AC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A011125E901D0009D1AC9 /* MainViewController.swift */; };
 		CC4A011525E901D0009D1AC9 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A011225E901D0009D1AC9 /* CreateViewController.swift */; };
 		CC4A011A25E901E7009D1AC9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A011925E901E7009D1AC9 /* DetailViewController.swift */; };
+		CCAA029125EBA21400993740 /* CreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA029025EBA21400993740 /* CreatePlanViewController.swift */; };
+		CCAA029625EBB61F00993740 /* ResultPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */; };
+		CCAA029B25EBC3A900993740 /* PlanCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA029A25EBC3A900993740 /* PlanCustomView.swift */; };
+		CCAA02A025EBC40E00993740 /* PlanCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAA029F25EBC40E00993740 /* PlanCustomView.xib */; };
 		CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */; };
 		CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */; };
 		CCEBACFA25EA42B70028BAD5 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF925EA42B70028BAD5 /* Schedule.swift */; };
@@ -64,6 +68,10 @@
 		CC4A011125E901D0009D1AC9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC4A011225E901D0009D1AC9 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		CC4A011925E901E7009D1AC9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CCAA029025EBA21400993740 /* CreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanViewController.swift; sourceTree = "<group>"; };
+		CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPlanViewController.swift; sourceTree = "<group>"; };
+		CCAA029A25EBC3A900993740 /* PlanCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCustomView.swift; sourceTree = "<group>"; };
+		CCAA029F25EBC40E00993740 /* PlanCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanCustomView.xib; sourceTree = "<group>"; };
 		CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
 		CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
 		CCEBACF925EA42B70028BAD5 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -160,6 +168,8 @@
 				CC4A011225E901D0009D1AC9 /* CreateViewController.swift */,
 				CC4A011925E901E7009D1AC9 /* DetailViewController.swift */,
 				CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */,
+				CCAA029025EBA21400993740 /* CreatePlanViewController.swift */,
+				CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -170,6 +180,8 @@
 				CC4A00D025E8FAD7009D1AC9 /* Main.storyboard */,
 				CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */,
 				CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */,
+				CCAA029A25EBC3A900993740 /* PlanCustomView.swift */,
+				CCAA029F25EBC40E00993740 /* PlanCustomView.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -288,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAA02A025EBC40E00993740 /* PlanCustomView.xib in Resources */,
 				CC4A00DA25E8FAD9009D1AC9 /* LaunchScreen.storyboard in Resources */,
 				CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */,
 				CC4A00D725E8FAD9009D1AC9 /* Assets.xcassets in Resources */,
@@ -316,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAA029B25EBC3A900993740 /* PlanCustomView.swift in Sources */,
 				CC4A011525E901D0009D1AC9 /* CreateViewController.swift in Sources */,
 				CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */,
 				CC4A00CB25E8FAD7009D1AC9 /* AppDelegate.swift in Sources */,
@@ -323,11 +337,13 @@
 				CCEBAD1125EB5E4F0028BAD5 /* Plan.swift in Sources */,
 				CC4A00D525E8FAD7009D1AC9 /* ScheduleImage.xcdatamodeld in Sources */,
 				CCEBAD0725EA6E690028BAD5 /* DateUtills.swift in Sources */,
+				CCAA029125EBA21400993740 /* CreatePlanViewController.swift in Sources */,
 				CCEBAD0C25EA8B1C0028BAD5 /* Database.swift in Sources */,
 				CCEBAD0225EA6BBB0028BAD5 /* ResultViewController.swift in Sources */,
 				CC4A00CD25E8FAD7009D1AC9 /* SceneDelegate.swift in Sources */,
 				CC4A011425E901D0009D1AC9 /* MainViewController.swift in Sources */,
 				CC4A011325E901D0009D1AC9 /* ViewController.swift in Sources */,
+				CCAA029625EBB61F00993740 /* ResultPlanViewController.swift in Sources */,
 				CC4A011A25E901E7009D1AC9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

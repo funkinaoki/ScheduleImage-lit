@@ -13,25 +13,31 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="87" id="KGk-i7-Jjw" customClass="ScheduleViewCell" customModule="ScheduleImage" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="379" height="87"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="348" height="87"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/02/17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKc-Le-4J2">
-                        <rect key="frame" x="16" y="36.5" width="59.5" height="14"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Jn-kf-8tG">
-                        <rect key="frame" x="40" y="54" width="268" height="2"/>
+                        <rect key="frame" x="40" y="55" width="268" height="2"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="EpQ-Lu-S0q"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/02/17" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au8-Kd-HwJ">
-                        <rect key="frame" x="274" y="36.5" width="58" height="14"/>
+                        <rect key="frame" x="274" y="38" width="58" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxT-yX-2tr">
+                        <rect key="frame" x="16" y="7" width="41" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/02/17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKc-Le-4J2">
+                        <rect key="frame" x="16" y="38" width="59.5" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -39,18 +45,21 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="6Jn-kf-8tG" firstAttribute="leading" secondItem="hKc-Le-4J2" secondAttribute="leading" constant="24" id="0d3-G1-ECY"/>
-                    <constraint firstItem="au8-Kd-HwJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CJA-cX-jpY"/>
+                    <constraint firstItem="6Jn-kf-8tG" firstAttribute="top" secondItem="au8-Kd-HwJ" secondAttribute="bottom" constant="3" id="3fy-d8-rbD"/>
+                    <constraint firstItem="AxT-yX-2tr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="55C-ba-F2Y"/>
+                    <constraint firstItem="6Jn-kf-8tG" firstAttribute="top" secondItem="hKc-Le-4J2" secondAttribute="bottom" constant="3" id="HWN-s4-iD7"/>
                     <constraint firstAttribute="trailing" secondItem="6Jn-kf-8tG" secondAttribute="trailing" constant="40" id="KSg-LQ-sVa"/>
-                    <constraint firstItem="hKc-Le-4J2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LrO-TE-W0C"/>
-                    <constraint firstItem="6Jn-kf-8tG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="54" id="UyX-Nv-kce"/>
-                    <constraint firstAttribute="bottom" secondItem="6Jn-kf-8tG" secondAttribute="bottom" constant="31" id="mtO-29-7mU"/>
+                    <constraint firstItem="6Jn-kf-8tG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="55" id="UyX-Nv-kce"/>
+                    <constraint firstAttribute="bottom" secondItem="6Jn-kf-8tG" secondAttribute="bottom" constant="25" id="mtO-29-7mU"/>
                     <constraint firstItem="au8-Kd-HwJ" firstAttribute="trailing" secondItem="6Jn-kf-8tG" secondAttribute="trailing" constant="24" id="nSh-Y2-5jA"/>
+                    <constraint firstItem="AxT-yX-2tr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="ppg-FP-dlq"/>
                     <constraint firstItem="6Jn-kf-8tG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="yAc-dP-q9r"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="endPointLabel" destination="au8-Kd-HwJ" id="Qz1-Xb-dZl"/>
+                <outlet property="nameLabel" destination="AxT-yX-2tr" id="5i3-es-u7i"/>
                 <outlet property="startPointLabel" destination="hKc-Le-4J2" id="Zmm-yR-Lhj"/>
             </connections>
             <point key="canvasLocation" x="68.840579710144937" y="108.14732142857143"/>

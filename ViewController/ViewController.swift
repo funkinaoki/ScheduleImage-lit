@@ -11,8 +11,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        UserDefaults.standard.removeAll()
     }
-
-
+ 
 }
 
+extension UserDefaults {
+    func removeAll() {
+        dictionaryRepresentation().forEach { removeObject(forKey: $0.key) }
+    }
+}

@@ -17,6 +17,7 @@ final class Database {
     var plans: [Plan] {
         getPlansData()
     }
+
     
     func setScheduleData(_ helloSchedule: Schedule) {
         //newschedulesにいああるデータを移行
@@ -55,7 +56,7 @@ extension Database {
     
     private func setSchedulesData(_ schedules: [Schedule]) {
         let encodedSchedulesData = schedules.map{ try? JSONEncoder().encode($0) }
-        UserDefaults.standard.register(defaults: ["schedules": encodedSchedulesData])
+        UserDefaults.standard.set(encodedSchedulesData as [Any], forKey: "schedules")
     }
     
     private func getPlansData() -> [Plan] {
@@ -67,7 +68,7 @@ extension Database {
     
     private func setPlansData(_ plans: [Plan]) {
         let encodedPlansData = plans.map{ try? JSONEncoder().encode($0) }
-        UserDefaults.standard.register(defaults: ["plans": encodedPlansData])
+        UserDefaults.standard.set(encodedPlansData as [Any], forKey: "plans")
     }
     
 }

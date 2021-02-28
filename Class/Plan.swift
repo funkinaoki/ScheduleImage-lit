@@ -9,6 +9,7 @@ import UIKit
 
 struct Plan: Codable{
     var id = UUID()
+    var name: String!
     var startPoint: String!
     var endPoint: String?
     var scheduleID: UUID!
