@@ -12,7 +12,7 @@ struct Plan: Codable{
     var name: String!
     var startPoint: Date!
     var endPoint: Date!
-    var floor: Int!
+    var floor: Int = 0
     var distanceDate: Float!
     var scheduleID: UUID!
     

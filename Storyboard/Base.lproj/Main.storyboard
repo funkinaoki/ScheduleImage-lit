@@ -274,7 +274,7 @@
                         <outlet property="endPoint" destination="ZEg-9y-CcU" id="cok-Ed-CLJ"/>
                         <outlet property="plus" destination="6uD-lo-mU8" id="tQi-6Q-uuL"/>
                         <outlet property="saveandShare" destination="tNR-fv-Nwc" id="UzX-KG-FZD"/>
-                        <outlet property="scheduleView" destination="0UZ-4e-H5g" id="4fy-lO-mTS"/>
+                        <outlet property="scheduleView" destination="0UZ-4e-H5g" id="cLb-Wi-if9"/>
                         <outlet property="startPoint" destination="cR5-Ri-TmV" id="fBN-RA-6Ep"/>
                         <outlet property="topLabel" destination="fde-Qr-rgL" id="jX4-te-VFR"/>
                     </connections>

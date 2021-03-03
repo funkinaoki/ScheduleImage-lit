@@ -27,8 +27,8 @@ class ScheduleViewCell: UITableViewCell {
     }
     
     func setCell(schedule: Schedule){
-        self.startPointLabel.text = DateUtils.stringFromDate(date: schedule.startPoint) as String
-        self.endPointLabel.text = DateUtils.stringFromDate(date: schedule.endPoint) as String
+        self.startPointLabel.text = DateUtils.stringFromDate(date: schedule.startPoint, format: "yyyy/MM/dd") as String
+        self.endPointLabel.text = DateUtils.stringFromDate(date: schedule.endPoint, format: "yyyy/MM/dd") as String
         self.nameLabel.text = "”" + schedule.name + "”" as String
     }
     

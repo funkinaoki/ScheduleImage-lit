@@ -28,10 +28,10 @@ class CreateViewController: UIViewController {
     @IBAction func datePicker(_ sender: UIDatePicker) {
         if secondDisplay == false {
             startPoint = sender.date
-            label.text = DateUtils.stringFromDate(date: startPoint)
+            label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         } else {
             endPoint = sender.date
-            label.text = DateUtils.stringFromDate(date: endPoint)
+            label.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
         }
     }
     
@@ -82,7 +82,7 @@ class CreateViewController: UIViewController {
         //説明文変える
         discription.text = "今から作成する\nスケジュールの開始日を選択してください。"
         //ラベルリセット
-        label.text = DateUtils.stringFromDate(date: startPoint)
+        label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         //datePickerをstartPointにする
         datePicker.date = startPoint
         //datePickerの最小値をリセット

@@ -15,10 +15,10 @@ class DateUtils {
         return formatter.date(from: string)!
     }
     
-    class func stringFromDate(date: Date) -> String {
+    class func stringFromDate(date: Date, format: String) -> String {
         let formatter: DateFormatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = format
         return formatter.string(from: date)
     }
 

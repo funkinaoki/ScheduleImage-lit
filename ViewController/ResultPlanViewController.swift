@@ -21,8 +21,8 @@ class ResultPlanViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        startPointLabel.text = DateUtils.stringFromDate(date: startPoint)
-        endPointLabel.text = DateUtils.stringFromDate(date: endPoint)
+        startPointLabel.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
+        endPointLabel.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
     }
     
     @IBAction func back(_ sender: Any) {

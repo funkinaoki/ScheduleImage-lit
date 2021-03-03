@@ -37,16 +37,18 @@ class CreatePlanViewController: UIViewController {
         
         datePicker.minimumDate = minimumScheduleDate
         datePicker.maximumDate = maximumScheduleDate
+        
+        datePicker.date = detailSchedule.startPoint
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         //ラベルを選択した日付にする
         if secondDisplay == false {
             startPoint = sender.date
-            label.text = DateUtils.stringFromDate(date: startPoint)
+            label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         } else {
             endPoint = sender.date
-            label.text = DateUtils.stringFromDate(date: endPoint)
+            label.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
         }
     }
     
@@ -93,7 +95,7 @@ class CreatePlanViewController: UIViewController {
         //説明文変える
         discription.text = "予定の開始日を選択してください。"
         //ラベルリセット
-        label.text = DateUtils.stringFromDate(date: startPoint)
+        label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         //datePickerをstartPointにする
         datePicker.date = startPoint
         //datePickerの最小値をリセット
