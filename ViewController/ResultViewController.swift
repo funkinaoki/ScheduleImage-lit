@@ -14,14 +14,14 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     
-    var startPoint: String!
-    var endPoint: String!
+    var startPoint: Date!
+    var endPoint: Date!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        startPointLabel.text = startPoint
-        endPointLabel.text = endPoint
+        startPointLabel.text = DateUtils.stringFromDate(date: startPoint)
+        endPointLabel.text = DateUtils.stringFromDate(date: endPoint)
     }
     
     @IBAction func back(_ sender: Any) {

@@ -18,8 +18,8 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var secondDisplay: Bool = false
-    var startPoint: String!
-    var endPoint: String!
+    var startPoint: Date!
+    var endPoint: Date!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +27,11 @@ class CreateViewController: UIViewController {
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         if secondDisplay == false {
-            startPoint = DateUtils.stringFromDate(date: sender.date)
-            label.text = startPoint
+            startPoint = sender.date
+            label.text = DateUtils.stringFromDate(date: startPoint)
         } else {
-            endPoint = DateUtils.stringFromDate(date: sender.date)
-            label.text = endPoint
+            endPoint = sender.date
+            label.text = DateUtils.stringFromDate(date: endPoint)
         }
     }
     
@@ -53,7 +53,7 @@ class CreateViewController: UIViewController {
             label.text = " "
             //datePickerの最小値を設定
             if secondDisplay == true {
-                datePicker.minimumDate = DateUtils.dateFromString(string: startPoint)
+                datePicker.minimumDate = startPoint
             }
         } else {
             print("notdoneyet!")
@@ -82,9 +82,9 @@ class CreateViewController: UIViewController {
         //説明文変える
         discription.text = "今から作成する\nスケジュールの開始日を選択してください。"
         //ラベルリセット
-        label.text = startPoint
+        label.text = DateUtils.stringFromDate(date: startPoint)
         //datePickerをstartPointにする
-        datePicker.date = DateUtils.dateFromString(string: startPoint)
+        datePicker.date = startPoint
         //datePickerの最小値をリセット
         datePicker.minimumDate = nil
         //endpointをnil

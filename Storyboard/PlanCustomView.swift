@@ -27,10 +27,10 @@ class PlanCustomView: UIView {
 
     }
     
-    func labelModify(name: String, startPoint: String, endPoint: String) {
+    func labelModify(name: String, startPoint: Date, endPoint: Date) {
         nameLabel.text = name
-        startPointLabel.text = startPoint
-        endPointLabel.text = endPoint
+        startPointLabel.text = DateUtils.stringFromDate(date: startPoint)
+        endPointLabel.text = DateUtils.stringFromDate(date: endPoint)
     }
     
     @IBAction func actionCloseView(_ sender: Any) {

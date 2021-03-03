@@ -10,8 +10,8 @@ import UIKit
 struct Schedule: Codable{
     var id = UUID()
     var name: String!
-    var startPoint: String!
-    var endPoint: String!
+    var startPoint: Date!
+    var endPoint: Date!
     
     func save() {
         let database = Database()

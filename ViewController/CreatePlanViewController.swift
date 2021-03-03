@@ -19,8 +19,8 @@ class CreatePlanViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var secondDisplay: Bool = false
-    var startPoint: String!
-    var endPoint: String!
+    var startPoint: Date!
+    var endPoint: Date!
     
     var minimumScheduleDate: Date!
     var maximumScheduleDate: Date!
@@ -32,8 +32,8 @@ class CreatePlanViewController: UIViewController {
         super.viewDidLoad()
         topLabel.title = "\(detailSchedule.startPoint!) - \(detailSchedule.endPoint!)"
         //dataPickerの最小値、最大値を設定
-        minimumScheduleDate = DateUtils.dateFromString(string: detailSchedule.startPoint)
-        maximumScheduleDate = DateUtils.dateFromString(string: detailSchedule.endPoint)
+        minimumScheduleDate = detailSchedule.startPoint
+        maximumScheduleDate = detailSchedule.endPoint
         
         datePicker.minimumDate = minimumScheduleDate
         datePicker.maximumDate = maximumScheduleDate
@@ -42,11 +42,11 @@ class CreatePlanViewController: UIViewController {
     @IBAction func datePicker(_ sender: UIDatePicker) {
         //ラベルを選択した日付にする
         if secondDisplay == false {
-            startPoint = DateUtils.stringFromDate(date: sender.date)
-            label.text = startPoint
+            startPoint = sender.date
+            label.text = DateUtils.stringFromDate(date: startPoint)
         } else {
-            endPoint = DateUtils.stringFromDate(date: sender.date)
-            label.text = endPoint
+            endPoint = sender.date
+            label.text = DateUtils.stringFromDate(date: endPoint)
         }
     }
     
@@ -66,7 +66,7 @@ class CreatePlanViewController: UIViewController {
             //ラベルリセット
             label.text = " "
             //datePickerの最小値を設定
-            datePicker.minimumDate = DateUtils.dateFromString(string: startPoint)
+            datePicker.minimumDate = startPoint
             
         } else {
             print("notdoneyet!")
@@ -93,9 +93,9 @@ class CreatePlanViewController: UIViewController {
         //説明文変える
         discription.text = "予定の開始日を選択してください。"
         //ラベルリセット
-        label.text = startPoint
+        label.text = DateUtils.stringFromDate(date: startPoint)
         //datePickerをstartPointにする
-        datePicker.date = DateUtils.dateFromString(string: startPoint)
+        datePicker.date = startPoint
         //datePickerの最小値をリセット
         datePicker.minimumDate = minimumScheduleDate
         //endpointをnil

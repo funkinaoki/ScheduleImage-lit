@@ -14,14 +14,15 @@ class ResultPlanViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     
-    var startPoint: String!
-    var endPoint: String!
+    var startPoint: Date!
+    var endPoint: Date!
     var detailSchedule: Schedule!
+    var distanceDate: Float!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        startPointLabel.text = startPoint
-        endPointLabel.text = endPoint
+        startPointLabel.text = DateUtils.stringFromDate(date: startPoint)
+        endPointLabel.text = DateUtils.stringFromDate(date: endPoint)
     }
     
     @IBAction func back(_ sender: Any) {
@@ -30,12 +31,14 @@ class ResultPlanViewController: UIViewController {
     
     @IBAction func create(_ sender: Any) {
         if nameTextField.text != "" {
-            let newPlan = Plan(name: nameTextField.text, startPoint: startPoint, endPoint: endPoint, scheduleID: detailSchedule.id )
+            distanceDate = Float(Calendar.current.dateComponents([.day], from: startPoint, to: endPoint).day!)
+            let newPlan = Plan(name: nameTextField.text, startPoint: startPoint, endPoint: endPoint, distanceDate: distanceDate, scheduleID: detailSchedule.id)
             newPlan.save()
             self.dismiss(animated: true, completion: nil)
         }
     }
 
+    
     
 
    

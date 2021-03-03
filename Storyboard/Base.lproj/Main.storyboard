@@ -235,20 +235,20 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cR5-Ri-TmV">
-                                <rect key="frame" x="20" y="416.5" width="85.5" height="20.5"/>
+                                <rect key="frame" x="5" y="416.5" width="85.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0UZ-4e-H5g">
-                                <rect key="frame" x="44" y="445" width="326" height="6"/>
-                                <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                <rect key="frame" x="20" y="445" width="374" height="6"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="6" id="xcd-M0-6AC"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEg-9y-CcU">
-                                <rect key="frame" x="308.5" y="416.5" width="85.5" height="20.5"/>
+                                <rect key="frame" x="323.5" y="416.5" width="85.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -257,15 +257,15 @@
                         <viewLayoutGuide key="safeArea" id="x5u-Fz-ZCP"/>
                         <color key="backgroundColor" red="0.94117647410000005" green="0.87843137979999997" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="0UZ-4e-H5g" secondAttribute="trailing" constant="44" id="6oX-L7-l0N"/>
-                            <constraint firstItem="cR5-Ri-TmV" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="20" id="BYp-RX-K13"/>
+                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="0UZ-4e-H5g" secondAttribute="trailing" constant="20" id="6oX-L7-l0N"/>
+                            <constraint firstItem="cR5-Ri-TmV" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="5" id="BYp-RX-K13"/>
                             <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="X5C-tP-sVb" secondAttribute="trailing" constant="67" id="Rvm-Ot-ID0"/>
                             <constraint firstItem="0UZ-4e-H5g" firstAttribute="top" secondItem="ZEg-9y-CcU" secondAttribute="bottom" constant="8" id="Vbd-Xy-frD"/>
                             <constraint firstItem="X5C-tP-sVb" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="67" id="Vca-ev-Lzr"/>
-                            <constraint firstItem="0UZ-4e-H5g" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="44" id="a2Q-E2-hG3"/>
+                            <constraint firstItem="0UZ-4e-H5g" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="20" id="a2Q-E2-hG3"/>
                             <constraint firstItem="0UZ-4e-H5g" firstAttribute="top" secondItem="cR5-Ri-TmV" secondAttribute="bottom" constant="8" id="gXw-G8-wFx"/>
                             <constraint firstItem="x5u-Fz-ZCP" firstAttribute="bottom" secondItem="X5C-tP-sVb" secondAttribute="bottom" constant="59" id="jpE-Kp-H3Z"/>
-                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="ZEg-9y-CcU" secondAttribute="trailing" constant="20" id="rUA-qR-Pzl"/>
+                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="ZEg-9y-CcU" secondAttribute="trailing" constant="5" id="rUA-qR-Pzl"/>
                             <constraint firstItem="0UZ-4e-H5g" firstAttribute="centerY" secondItem="781-az-zvo" secondAttribute="centerY" id="vKF-JD-SQ8"/>
                         </constraints>
                     </view>
@@ -274,6 +274,7 @@
                         <outlet property="endPoint" destination="ZEg-9y-CcU" id="cok-Ed-CLJ"/>
                         <outlet property="plus" destination="6uD-lo-mU8" id="tQi-6Q-uuL"/>
                         <outlet property="saveandShare" destination="tNR-fv-Nwc" id="UzX-KG-FZD"/>
+                        <outlet property="scheduleView" destination="0UZ-4e-H5g" id="4fy-lO-mTS"/>
                         <outlet property="startPoint" destination="cR5-Ri-TmV" id="fBN-RA-6Ep"/>
                         <outlet property="topLabel" destination="fde-Qr-rgL" id="jX4-te-VFR"/>
                     </connections>
@@ -654,9 +655,6 @@
         <image name="pointImage" width="99" height="99"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="placeholderTextColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
