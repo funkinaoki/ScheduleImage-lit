@@ -63,7 +63,6 @@
                     <constraints>
                         <constraint firstItem="Nf4-on-exK" firstAttribute="centerY" secondItem="wvj-vR-REn" secondAttribute="centerY" id="93g-Ck-PlH"/>
                         <constraint firstItem="LN5-tf-inG" firstAttribute="centerX" secondItem="wvj-vR-REn" secondAttribute="centerX" id="BLh-dy-zHk"/>
-                        <constraint firstAttribute="bottom" secondItem="LN5-tf-inG" secondAttribute="bottom" constant="8" id="KVx-Xn-f8I"/>
                         <constraint firstItem="LN5-tf-inG" firstAttribute="top" secondItem="Nf4-on-exK" secondAttribute="bottom" constant="3.5" id="M95-G8-Aex"/>
                         <constraint firstItem="BTP-OY-OYP" firstAttribute="leading" secondItem="wvj-vR-REn" secondAttribute="leading" id="Q2W-8a-K0C"/>
                         <constraint firstAttribute="trailing" secondItem="cCT-Oc-whx" secondAttribute="trailing" id="Sdw-z6-MIx"/>
@@ -92,7 +91,7 @@
                 <outlet property="nameLabel" destination="LN5-tf-inG" id="MNq-og-c25"/>
                 <outlet property="startPointLabel" destination="BTP-OY-OYP" id="DQm-a7-vGg"/>
             </connections>
-            <point key="canvasLocation" x="82.608695652173921" y="86.383928571428569"/>
+            <point key="canvasLocation" x="81.538461538461533" y="86.018957345971558"/>
         </view>
     </objects>
     <resources>

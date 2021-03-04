@@ -119,9 +119,13 @@ class DetailViewController: UIViewController {
             startPointLength = Float(scheduleView.frame.width) * startPointRatio
             
                 
-            customView.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX,  y: self.view.frame.height/2 + CGFloat(integerLiteral: plans[n].floor * 50 + 3), width: CGFloat(planLength), height: 50)
+            customView.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX,
+                                      y: self.view.frame.height/2 + CGFloat(integerLiteral: plans[n].floor * 50 + 3),
+                                      width: CGFloat(planLength),
+                                      height: 50)
             
-            print("go")
+            print(planLength!)
+            print(Float(scheduleView.frame.width))
         
             self.view.addSubview(customView)
             customView.labelModify(name: plans[n].name, startPoint: plans[n].startPoint, endPoint: plans[n].endPoint)
