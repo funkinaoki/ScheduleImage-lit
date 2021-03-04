@@ -20,4 +20,15 @@ struct Plan: Codable{
         let database = Database()
         database.setPlanData(self)
     }
+    
+    func delete() {
+        let database = Database()
+        do {
+            try database.deletePlanData(self)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+
 }

@@ -81,7 +81,6 @@ class DetailViewController: UIViewController {
                         for y in floorDays[z] { //一番低い階層
                             if x == y { //日付が被ってたら
                                 plans[n].floor = z + 1 //階層を今のfor文の階層に変える
-                                
                                 break for_x
                             }
                         }
@@ -114,12 +113,6 @@ class DetailViewController: UIViewController {
             lengthRatio = plans[n].distanceDate / scheduleDistanceDate
             planLength = Float(scheduleView.frame.width) * lengthRatio
             
-//            print(plans[n].distanceDate!)
-//            print(scheduleDistanceDate!)
-//            print(lengthRatio!)
-            
-            print(scheduleView.frame.width)
-            print(planLength!)
             //ここからplanの開始点を定義するよー
             startPointDistanceDate = Float(Calendar.current.dateComponents([.day], from: startPointDate, to: startPointPlanDate).day!)
             startPointRatio = startPointDistanceDate / scheduleDistanceDate
@@ -127,6 +120,8 @@ class DetailViewController: UIViewController {
             
                 
             customView.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX,  y: self.view.frame.height/2 + CGFloat(integerLiteral: plans[n].floor * 50 + 3), width: CGFloat(planLength), height: 50)
+            
+            print("go")
         
             self.view.addSubview(customView)
             customView.labelModify(name: plans[n].name, startPoint: plans[n].startPoint, endPoint: plans[n].endPoint)
@@ -153,6 +148,8 @@ class DetailViewController: UIViewController {
                 result.append(wkStr)
             }
         }
+        result.removeFirst()
+        result.removeLast()
         return result
     }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultPlanViewController: UIViewController {
+class ResultPlanViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
@@ -23,6 +23,8 @@ class ResultPlanViewController: UIViewController {
         super.viewDidLoad()
         startPointLabel.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         endPointLabel.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
+        
+        nameTextField.delegate = self
     }
     
     @IBAction func back(_ sender: Any) {
@@ -37,9 +39,12 @@ class ResultPlanViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-
     
-    
+    //キーボード
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        return true
+    }
 
    
 

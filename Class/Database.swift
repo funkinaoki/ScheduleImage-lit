@@ -7,6 +7,16 @@
 
 import UIKit
 
+enum DatabaseError: Error, LocalizedError {
+    case notFound
+    
+    var errorDescription: String? {
+        switch self {
+            case .notFound:
+                return "該当のデータは見つかりませんでした。"
+        }
+    }
+}
 
 final class Database {
     
@@ -41,6 +51,37 @@ final class Database {
             newPlans.append(helloPlan)
         }
         setPlansData(newPlans)
+    }
+    
+    func deleteScheduleData(_ helloSchedule: Schedule) throws {
+        var newSchedules = schedules
+        if let index = newSchedules.firstIndex(where: { return $0.id == helloSchedule.id }) {
+            newSchedules.remove(at: index)
+            setSchedulesData(newSchedules)
+        } else {
+            throw DatabaseError.notFound
+        }
+    }
+    
+    func deletePlanData(_ helloPlan: Plan) throws {
+        var newPlans = plans
+        if let index = newPlans.firstIndex(where: { return $0.id == helloPlan.id }) {
+            newPlans.remove(at: index)
+            setPlansData(newPlans)
+        } else {
+            throw DatabaseError.notFound
+        }
+    }
+    
+    func changeScheduleOrder(helloSchedule: Schedule,destinationIndex: Int) throws {
+        var newSchedules = schedules
+        if let index = newSchedules.firstIndex(where: { return $0.id == helloSchedule.id }) {
+            newSchedules.remove(at: index)
+            newSchedules.insert(helloSchedule, at: destinationIndex)
+            setSchedulesData(newSchedules)
+        } else {
+            throw DatabaseError.notFound
+        }
     }
     
 }

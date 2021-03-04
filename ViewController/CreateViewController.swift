@@ -23,6 +23,9 @@ class CreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startPoint = Date()
+        label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
+        
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
@@ -38,36 +41,25 @@ class CreateViewController: UIViewController {
    
     @IBAction func next(_ sender: Any) {
         //startpoint定めていたら画面デザイン変える
-        if startPoint != nil {
-            //次の画面に遷移した証
-            secondDisplay = !secondDisplay
-            //ボタンを非表示&表示
-            nextButton.isHidden = true
-            backAndNextButton.isHidden = false
-            //線の位置を変える
-            lineRight.isHidden = true
-            lineLeft.isHidden = false
-            //説明文変える
-            discription.text = "スケジュールの終了日を選択してください。"
-            //ラベルリセット
-            label.text = " "
-            //datePickerの最小値を設定
-            if secondDisplay == true {
-                datePicker.minimumDate = startPoint
-            }
-        } else {
-            print("notdoneyet!")
-            //テスト
-            
-        }
+         //次の画面に遷移した証
+        secondDisplay = !secondDisplay
+        //ボタンを非表示&表示
+        nextButton.isHidden = true
+        backAndNextButton.isHidden = false
+        //線の位置を変える
+        lineRight.isHidden = true
+        lineLeft.isHidden = false
+        //説明文変える
+        discription.text = "スケジュールの終了日を選択してください。"
+        //ラベルリセット
+        label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
+        //datePickerの最小値を設定
+        datePicker.minimumDate = startPoint
+        
     }
     
     @IBAction func done(_ sender: Any) {
-        if endPoint != nil {
-          toResultView()
-        } else {
-            print("まだやで")
-        }
+        toResultView()
     }
     
     @IBAction func back(_ sender: Any) {
@@ -87,8 +79,6 @@ class CreateViewController: UIViewController {
         datePicker.date = startPoint
         //datePickerの最小値をリセット
         datePicker.minimumDate = nil
-        //endpointをnil
-        endPoint = nil
     }
     
     func toResultView() {

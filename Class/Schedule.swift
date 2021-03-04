@@ -17,4 +17,22 @@ struct Schedule: Codable{
         let database = Database()
         database.setScheduleData(self)
     }
+    
+    func delete() {
+        let database = Database()
+        do {
+            try database.deleteScheduleData(self)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func changeOrder(destinationIndex: Int) {
+        let database = Database()
+        do {
+            try database.changeScheduleOrder(helloSchedule: self, destinationIndex: destinationIndex)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }

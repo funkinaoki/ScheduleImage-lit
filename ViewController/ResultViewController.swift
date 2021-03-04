@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
@@ -22,6 +22,7 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         startPointLabel.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         endPointLabel.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
+        nameTextField.delegate = self
     }
     
     @IBAction func back(_ sender: Any) {
@@ -34,6 +35,11 @@ class ResultViewController: UIViewController {
             newSchedule.save()
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        return true
     }
     
 }

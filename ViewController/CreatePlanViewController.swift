@@ -30,7 +30,7 @@ class CreatePlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topLabel.title = "\(detailSchedule.startPoint!) - \(detailSchedule.endPoint!)"
+        topLabel.title = "\(DateUtils.stringFromDate(date: detailSchedule.startPoint!, format: "yyyy/MM/dd") ) - \(DateUtils.stringFromDate(date: detailSchedule.endPoint!, format: "yyyy/MM/dd") )"
         //dataPickerの最小値、最大値を設定
         minimumScheduleDate = detailSchedule.startPoint
         maximumScheduleDate = detailSchedule.endPoint
@@ -39,6 +39,10 @@ class CreatePlanViewController: UIViewController {
         datePicker.maximumDate = maximumScheduleDate
         
         datePicker.date = detailSchedule.startPoint
+        startPoint = datePicker.date
+        label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
+        
+        
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
@@ -53,34 +57,26 @@ class CreatePlanViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        //startpoint定めていたら画面デザイン変える
-        if startPoint != nil {
-            //次の画面に遷移した証
-            secondDisplay = !secondDisplay
-            //ボタンを非表示&表示
-            nextButton.isHidden = true
-            backAndNextButton.isHidden = false
-            //線の位置を変える
-            lineRight.isHidden = true
-            lineLeft.isHidden = false
-            //説明文変える
-            discription.text = "予定の終了日を選択してください。"
-            //ラベルリセット
-            label.text = " "
-            //datePickerの最小値を設定
-            datePicker.minimumDate = startPoint
+        //次の画面に遷移した証
+        secondDisplay = !secondDisplay
+        //ボタンを非表示&表示
+        nextButton.isHidden = true
+        backAndNextButton.isHidden = false
+        //線の位置を変える
+        lineRight.isHidden = true
+        lineLeft.isHidden = false
+        //説明文変える
+        discription.text = "予定の終了日を選択してください。"
+        
+        //datePickerの最小値を設定
+        datePicker.minimumDate = startPoint
+        
+        datePicker.date = startPoint
+        
+        endPoint = startPoint
+        
+        label.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
             
-        } else {
-            print("notdoneyet!")
-        }
-    }
-    
-    @IBAction func done(_ sender: Any) {
-        if endPoint != nil {
-          toResultView()
-        } else {
-            print("まだやで")
-        }
     }
     
     @IBAction func back(_ sender: Any) {
@@ -100,8 +96,6 @@ class CreatePlanViewController: UIViewController {
         datePicker.date = startPoint
         //datePickerの最小値をリセット
         datePicker.minimumDate = minimumScheduleDate
-        //endpointをnil
-        endPoint = nil
     }
     
     func toResultView() {
