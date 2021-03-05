@@ -51,7 +51,20 @@ class DetailViewController: UIViewController {
         
         scheduleDistanceDate = Float(Calendar.current.dateComponents([.day], from: startPointDate, to: endPointDate).day!)
         
+        print(self.view.subviews)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setPlans()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+//        let viewController = DetailViewController()
+//
+//        for subview in self.view.subviews {
+//            subview.removeFromSuperview()
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,32 +116,74 @@ class DetailViewController: UIViewController {
         
         //その回数分viewを呼び出す
         for n in 0..<plans.count {
-            let customView = Bundle.main.loadNibNamed("PlanCustomView", owner: self, options: nil)?.first as! PlanCustomView
-            
-            //planの開始日と終了日を定義するよー
-            startPointPlanDate = plans[n].startPoint
-            endPointPlanDate = plans[n].endPoint
-            
-            //ここからplanの長さを定義するよー
-            lengthRatio = plans[n].distanceDate / scheduleDistanceDate
-            planLength = Float(scheduleView.frame.width) * lengthRatio
-            
-            //ここからplanの開始点を定義するよー
-            startPointDistanceDate = Float(Calendar.current.dateComponents([.day], from: startPointDate, to: startPointPlanDate).day!)
-            startPointRatio = startPointDistanceDate / scheduleDistanceDate
-            startPointLength = Float(scheduleView.frame.width) * startPointRatio
-            
+            //もし開始日と終了日が同じ日じゃなかったら
+            if plans[n].startPoint != plans[n].endPoint {
+                let customView = Bundle.main.loadNibNamed("PlanCustomView", owner: self, options: nil)?.first as! PlanCustomView
                 
-            customView.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX,
-                                      y: self.view.frame.height/2 + CGFloat(integerLiteral: plans[n].floor * 50 + 3),
-                                      width: CGFloat(planLength),
-                                      height: 50)
+                //planの開始日と終了日を定義するよー
+                startPointPlanDate = plans[n].startPoint
+                endPointPlanDate = plans[n].endPoint
+                
+                //ここからplanの長さを定義するよー
+                lengthRatio = plans[n].distanceDate / scheduleDistanceDate
+                planLength = Float(scheduleView.frame.width) * lengthRatio
+                
+                //ここからplanの開始点を定義するよー
+                startPointDistanceDate = Float(Calendar.current.dateComponents([.day], from: startPointDate, to: startPointPlanDate).day!)
+                startPointRatio = startPointDistanceDate / scheduleDistanceDate
+                startPointLength = Float(scheduleView.frame.width) * startPointRatio
+                
+                    
+                customView.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX,
+                                          y: self.view.frame.height/2 + CGFloat(integerLiteral: plans[n].floor * 30 + 3),
+                                          width: CGFloat(planLength),
+                                          height: 30)
             
-            print(planLength!)
-            print(Float(scheduleView.frame.width))
-        
-            self.view.addSubview(customView)
-            customView.labelModify(name: plans[n].name, startPoint: plans[n].startPoint, endPoint: plans[n].endPoint)
+                self.view.addSubview(customView)
+                customView.labelModify(name: plans[n].name)
+                
+                
+                
+                
+                
+                // ここからUILabelの設定
+                let startPointPlanLabel = UILabel() // ラベルの生成
+                
+                startPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
+                startPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plans[n].startPoint!, format: "MM/dd"))" // テキストの設定
+                startPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
+                startPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
+//                startPointPlanLabel.backgroundColor = UIColor.lightGray
+                
+                //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
+                let frameStart = CGSize(width: 200, height: 200)
+                let rectStart = startPointPlanLabel.sizeThatFits(frameStart)
+                
+                startPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectStart.width / 2, y: self.view.frame.height/2 - 14 , width: rectStart.width, height: rectStart.height) // 位置とサイズの指定
+                
+                self.view.addSubview(startPointPlanLabel) // ラベルの追加
+                
+                // ここからendpointの設定
+                let endPointPlanLabel = UILabel() // ラベルの生成
+                
+                endPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
+                endPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plans[n].endPoint!, format: "MM/dd"))" // テキストの設定
+                endPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
+                endPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
+//                startPointPlanLabel.backgroundColor = UIColor.lightGray
+                
+                //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
+                let frameEnd = CGSize(width: 200, height: 200)
+                let rectEnd = endPointPlanLabel.sizeThatFits(frameEnd)
+                
+                endPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectEnd.width / 2 + CGFloat(planLength), y: self.view.frame.height/2 - 14 , width: rectEnd.width, height: rectEnd.height) // 位置とサイズの指定
+                
+                self.view.addSubview(endPointPlanLabel) // ラベルの追加
+                
+            } else { //もし開始日と終了日が同じ日だったら
+                
+            }
+            
         }
     }
     

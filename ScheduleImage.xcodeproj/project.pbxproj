@@ -23,6 +23,8 @@
 		CCAA029625EBB61F00993740 /* ResultPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */; };
 		CCAA029B25EBC3A900993740 /* PlanCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA029A25EBC3A900993740 /* PlanCustomView.swift */; };
 		CCAA02A025EBC40E00993740 /* PlanCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAA029F25EBC40E00993740 /* PlanCustomView.xib */; };
+		CCE205C425F1176800EA7E83 /* OneDayPlanCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCE205C325F1176800EA7E83 /* OneDayPlanCustomView.xib */; };
+		CCE205CC25F1179F00EA7E83 /* OneDayPlanCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE205CB25F1179F00EA7E83 /* OneDayPlanCustomView.swift */; };
 		CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */; };
 		CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */; };
 		CCEBACFA25EA42B70028BAD5 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF925EA42B70028BAD5 /* Schedule.swift */; };
@@ -72,6 +74,8 @@
 		CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPlanViewController.swift; sourceTree = "<group>"; };
 		CCAA029A25EBC3A900993740 /* PlanCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCustomView.swift; sourceTree = "<group>"; };
 		CCAA029F25EBC40E00993740 /* PlanCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanCustomView.xib; sourceTree = "<group>"; };
+		CCE205C325F1176800EA7E83 /* OneDayPlanCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneDayPlanCustomView.xib; sourceTree = "<group>"; };
+		CCE205CB25F1179F00EA7E83 /* OneDayPlanCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayPlanCustomView.swift; sourceTree = "<group>"; };
 		CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
 		CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
 		CCEBACF925EA42B70028BAD5 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */,
 				CCAA029A25EBC3A900993740 /* PlanCustomView.swift */,
 				CCAA029F25EBC40E00993740 /* PlanCustomView.xib */,
+				CCE205C325F1176800EA7E83 /* OneDayPlanCustomView.xib */,
+				CCE205CB25F1179F00EA7E83 /* OneDayPlanCustomView.swift */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCE205C425F1176800EA7E83 /* OneDayPlanCustomView.xib in Resources */,
 				CCAA02A025EBC40E00993740 /* PlanCustomView.xib in Resources */,
 				CC4A00DA25E8FAD9009D1AC9 /* LaunchScreen.storyboard in Resources */,
 				CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */,
@@ -344,6 +351,7 @@
 				CC4A011425E901D0009D1AC9 /* MainViewController.swift in Sources */,
 				CC4A011325E901D0009D1AC9 /* ViewController.swift in Sources */,
 				CCAA029625EBB61F00993740 /* ResultPlanViewController.swift in Sources */,
+				CCE205CC25F1179F00EA7E83 /* OneDayPlanCustomView.swift in Sources */,
 				CC4A011A25E901E7009D1AC9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
