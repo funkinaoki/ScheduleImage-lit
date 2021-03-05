@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC14F47825F247EA00E8A6BE /* PlanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14F47725F247EA00E8A6BE /* PlanDetailViewController.swift */; };
 		CC4A00CB25E8FAD7009D1AC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00CA25E8FAD7009D1AC9 /* AppDelegate.swift */; };
 		CC4A00CD25E8FAD7009D1AC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A00CC25E8FAD7009D1AC9 /* SceneDelegate.swift */; };
 		CC4A00D225E8FAD7009D1AC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4A00D025E8FAD7009D1AC9 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC14F47725F247EA00E8A6BE /* PlanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailViewController.swift; sourceTree = "<group>"; };
 		CC4A00C725E8FAD7009D1AC9 /* ScheduleImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScheduleImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4A00CA25E8FAD7009D1AC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4A00CC25E8FAD7009D1AC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */,
 				CCAA029025EBA21400993740 /* CreatePlanViewController.swift */,
 				CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */,
+				CC14F47725F247EA00E8A6BE /* PlanDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				CCEBAD1125EB5E4F0028BAD5 /* Plan.swift in Sources */,
 				CC4A00D525E8FAD7009D1AC9 /* ScheduleImage.xcdatamodeld in Sources */,
 				CCEBAD0725EA6E690028BAD5 /* DateUtills.swift in Sources */,
+				CC14F47825F247EA00E8A6BE /* PlanDetailViewController.swift in Sources */,
 				CCAA029125EBA21400993740 /* CreatePlanViewController.swift in Sources */,
 				CCEBAD0C25EA8B1C0028BAD5 /* Database.swift in Sources */,
 				CCEBAD0225EA6BBB0028BAD5 /* ResultViewController.swift in Sources */,

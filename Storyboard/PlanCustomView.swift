@@ -29,11 +29,14 @@ class PlanCustomView: UIView {
         nameLabel.text = name
     }
     
-    @IBAction func actionCloseView(_ sender: Any) {
+    func actionCloseView(_ sender: DetailViewController) {
         self.removeFromSuperview()
     }
-
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let mainVC = MainViewController()
+        
+    }
 
 
 }

@@ -253,5 +253,9 @@ class DetailViewController: UIViewController {
         result.removeLast()
         return result
     }
+    
+    func toPlanDetailView() {
+        
+    }
 
 }
