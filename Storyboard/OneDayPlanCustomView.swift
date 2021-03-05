@@ -9,6 +9,8 @@ import UIKit
 
 class OneDayPlanCustomView: UIView {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         initView()
@@ -23,7 +25,8 @@ class OneDayPlanCustomView: UIView {
 
     }
 
-    func labelModify(name: String, startPoint: Date, endPoint: Date) {
+    func labelModify(name: String) {
+        nameLabel.text = name
     }
 
     @IBAction func actionCloseView(_ sender: Any) {
