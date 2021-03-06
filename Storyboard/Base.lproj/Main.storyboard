@@ -650,7 +650,7 @@
         <!--TOP-->
         <scene sceneID="onV-fX-0D4">
             <objects>
-                <viewController storyboardIdentifier="PlanDetailViewController" id="Y9v-FQ-bk3" customClass="PlanDetailViewController" customModule="ScheduleImage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlanDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y9v-FQ-bk3" customClass="PlanDetailViewController" customModule="ScheduleImage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JjC-Fw-rh1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,7 +7,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+
+
+class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
     
     @IBOutlet weak var startPoint: UILabel!
     @IBOutlet weak var endPoint: UILabel!
@@ -40,6 +42,8 @@ class DetailViewController: UIViewController {
     
     var floorDays: [[String]] = [] //変数の中に、階層⇨alldate //そのフロアにおける埋まってる日付
     
+    let planCustom = PlanCustomView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         database = Database()
@@ -52,12 +56,21 @@ class DetailViewController: UIViewController {
         
         scheduleDistanceDate = Float(Calendar.current.dateComponents([.day], from: startPointDate, to: endPointDate).day!)
         
+        // デリゲートプロパティにこのクラスを設定
+        planCustom.delegate = self
+        
+        
+        
+        
 //        print(self.view.subviews)
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setPlans()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -254,8 +267,15 @@ class DetailViewController: UIViewController {
         return result
     }
     
-    func toPlanDetailView() {
-        
+//    func toPlanDetailView() {
+//        let storyboard: UIStoryboard = UIStoryboard(name: "PlanDetailViewController", bundle: nil)
+//        let PlanDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController")
+//        self.present(PlanDetailViewController, animated: true, completion: nil)
+//        print("yes")
+//    }
+//
+    func test() {
+        print("hi")
     }
 
 }
