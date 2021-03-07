@@ -36,7 +36,7 @@ class ResultPlanViewController: UIViewController, UITextFieldDelegate {
             distanceDate = Float(Calendar.current.dateComponents([.day], from: startPoint, to: endPoint).day!)
             let newPlan = Plan(name: nameTextField.text, startPoint: startPoint, endPoint: endPoint, distanceDate: distanceDate, scheduleID: detailSchedule.id)
             newPlan.save()
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     

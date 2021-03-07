@@ -27,6 +27,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        print(UserDefaults.standard.dictionaryRepresentation().filter { $0.key.hasPrefix("schedules") })
         currentSchedules = database.schedules
         
+        
+        self.navigationController?.navigationBar.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:300)
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +38,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         database = Database()
         tableView.reloadData()
     }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentSchedules.count
@@ -60,9 +66,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         currentSchedules.remove(at: sourceIndexPath.row)
         currentSchedules.insert(schedule, at: destinationIndexPath.row)
-
-      
-        
         
     }
     
@@ -107,7 +110,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "完了", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editButton))
             navigationItem.leftBarButtonItem?.tintColor = UIColor.red
         }
-        print(UserDefaults.standard.dictionaryRepresentation().filter { $0.key.hasPrefix("plans") })
+//        print(UserDefaults.standard.dictionaryRepresentation().filter { $0.key.hasPrefix("plans") })
     }
     
     

@@ -9,7 +9,7 @@ import UIKit
 
 
 
-class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
+class DetailViewController: UIViewController{
     
     @IBOutlet weak var startPoint: UILabel!
     @IBOutlet weak var endPoint: UILabel!
@@ -41,14 +41,16 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
     var startPointLength: Float!
     
     var floorDays: [[String]] = [] //変数の中に、階層⇨alldate //そのフロアにおける埋まってる日付
+    var alreadyDays: [Date] = []
+//    let planCustom = PlanCustomView()
     
-    let planCustom = PlanCustomView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         database = Database()
-        startPoint.text = DateUtils.stringFromDate(date: detailSchedule.startPoint, format: "yyyy/MM/dd")
-        endPoint.text = DateUtils.stringFromDate(date: detailSchedule.endPoint, format: "yyyy/MM/dd")
+        print("ff")
+        startPoint.text = DateUtils.stringFromDate(date: detailSchedule.startPoint, format: "yyyy \n MM/dd")
+        endPoint.text = DateUtils.stringFromDate(date: detailSchedule.endPoint, format: "yyyy \n MM/dd")
         topLabel.title = detailSchedule.name
         
         startPointDate = detailSchedule.startPoint
@@ -56,21 +58,23 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
         
         scheduleDistanceDate = Float(Calendar.current.dateComponents([.day], from: startPointDate, to: endPointDate).day!)
         
+        alreadyDays.append(detailSchedule.startPoint)
+        alreadyDays.append(detailSchedule.endPoint)
+        
         // デリゲートプロパティにこのクラスを設定
-        planCustom.delegate = self
+//        planCustom.delegate = self
         
         
-        
-        
-//        print(self.view.subviews)
+
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setPlans()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        setPlans()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -79,6 +83,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
 //        for subview in self.view.subviews {
 //            subview.removeFromSuperview()
 //        }
+//        self.loadView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,11 +93,18 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
         }
     }
     
+    @IBAction func saveAndShare(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let planDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController")
+        self.present(planDetailViewController, animated: true, completion: nil)
+    }
+    
     func setPlans () {
         //１日イベントとそうじゃないのは違うロジックで記述します。
         //そうじゃないの
         plansDifferentDate = database.plans.filter { $0.scheduleID == detailSchedule.id && $0.startPoint != $0.endPoint}
         plansDifferentDate.sort(by: {$0.distanceDate < $1.distanceDate})
+        print(plansDifferentDate.count)
         
         //１日イベント
         plansSameDate = database.plans.filter { $0.scheduleID == detailSchedule.id && $0.startPoint == $0.endPoint}
@@ -146,6 +158,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
             
                 
             let customView = Bundle.main.loadNibNamed("PlanCustomView", owner: self, options: nil)?.first as! PlanCustomView
+            customView.delegate = self
             
             customView.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX,
                                       y: self.view.frame.height/2 + CGFloat(integerLiteral: plansDifferentDate[n].floor * 30 + 3),
@@ -157,39 +170,52 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
             
             ///ここからUILabelの設定
             
-            //startPointの設定
-            let startPointPlanLabel = UILabel() // ラベルの生成
+            //labelの設定
             
-            startPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
-            startPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansDifferentDate[n].startPoint!, format: "MM/dd"))" // テキストの設定
-            startPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
-            startPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
-//                startPointPlanLabel.backgroundColor = UIColor.lightGray
+            if !alreadyDays.contains(plansDifferentDate[n].startPoint) {
+                
             
-            //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
-            let frameStart = CGSize(width: 200, height: 200)
-            let rectStart = startPointPlanLabel.sizeThatFits(frameStart)
+                let startPointPlanLabel = UILabel() // ラベルの生成
+                
+                startPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
+                startPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansDifferentDate[n].startPoint!, format: "MM/dd"))" // テキストの設定
+                startPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
+                startPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
+    //                startPointPlanLabel.backgroundColor = UIColor.lightGray
+                
+                //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
+                let frameStart = CGSize(width: 200, height: 200)
+                let rectStart = startPointPlanLabel.sizeThatFits(frameStart)
+                
+                startPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectStart.width / 2, y: self.view.frame.height/2 - 14 , width: rectStart.width, height: rectStart.height) // 位置とサイズの指定
+                
+                self.view.addSubview(startPointPlanLabel) // ラベルの追加
+                alreadyDays.append(plansDifferentDate[n].startPoint) //自分の追加
             
-            startPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectStart.width / 2, y: self.view.frame.height/2 - 14 , width: rectStart.width, height: rectStart.height) // 位置とサイズの指定
+            }
             
-            self.view.addSubview(startPointPlanLabel) // ラベルの追加
-            
-            // ここからendpointの設定
-            let endPointPlanLabel = UILabel() // ラベルの生成
-            
-            endPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
-            endPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansDifferentDate[n].endPoint!, format: "MM/dd"))" // テキストの設定
-            endPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
-            endPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
-//          startPointPlanLabel.backgroundColor = UIColor.lightGray
-            
-            //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
-            let frameEnd = CGSize(width: 200, height: 200)
-            let rectEnd = endPointPlanLabel.sizeThatFits(frameEnd)
-            
-            endPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectEnd.width / 2 + CGFloat(planLength), y: self.view.frame.height/2 - 14 , width: rectEnd.width, height: rectEnd.height) // 位置とサイズの指定
-            
-            self.view.addSubview(endPointPlanLabel) // ラベルの追加
+            if !alreadyDays.contains(plansDifferentDate[n].endPoint) {
+                // ここからendpointの設定
+                let endPointPlanLabel = UILabel() // ラベルの生成
+                
+                endPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
+                endPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansDifferentDate[n].endPoint!, format: "MM/dd"))" // テキストの設定
+                endPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
+                endPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
+    //          startPointPlanLabel.backgroundColor = UIColor.lightGray
+                
+                //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
+                let frameEnd = CGSize(width: 200, height: 200)
+                let rectEnd = endPointPlanLabel.sizeThatFits(frameEnd)
+                
+                endPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectEnd.width / 2 + CGFloat(planLength), y: self.view.frame.height/2 - 14 , width: rectEnd.width, height: rectEnd.height) // 位置とサイズの指定
+                
+                self.view.addSubview(endPointPlanLabel) // ラベルの追加
+                
+                
+                alreadyDays.append(plansDifferentDate[n].endPoint)
+                
+            }
         }
         
         ///１日イベント
@@ -221,24 +247,27 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
             self.view.addSubview(customView)
             customView.labelModify(name: plansSameDate[n].name)
             
-            //UILABEL
-            //startPointの設定
-            let startPointPlanLabel = UILabel() // ラベルの生成
+            if !alreadyDays.contains(plansSameDate[n].startPoint) {
             
-            startPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
-            startPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansSameDate[n].startPoint!, format: "MM/dd"))" // テキストの設定
-            startPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
-            startPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
-//                startPointPlanLabel.backgroundColor = UIColor.lightGray
-            
-            //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
-            let frameStart = CGSize(width: 200, height: 200)
-            let rectStart = startPointPlanLabel.sizeThatFits(frameStart)
-            
-            startPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectStart.width / 2, y: self.view.frame.height/2 - 14 , width: rectStart.width, height: rectStart.height) // 位置とサイズの指定
-            
-            self.view.addSubview(startPointPlanLabel) // ラベルの追加
-            
+                //UILABEL
+                //startPointの設定
+                let startPointPlanLabel = UILabel() // ラベルの生成
+                
+                startPointPlanLabel.textAlignment = NSTextAlignment.left // 横揃えの設定
+                startPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansSameDate[n].startPoint!, format: "MM/dd"))" // テキストの設定
+                startPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
+                startPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
+    //                startPointPlanLabel.backgroundColor = UIColor.lightGray
+                
+                //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
+                let frameStart = CGSize(width: 200, height: 200)
+                let rectStart = startPointPlanLabel.sizeThatFits(frameStart)
+                
+                startPointPlanLabel.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectStart.width / 2, y: self.view.frame.height/2 - 14 , width: rectStart.width, height: rectStart.height) // 位置とサイズの指定
+                
+                self.view.addSubview(startPointPlanLabel) // ラベルの追加
+                alreadyDays.append(plansSameDate[n].startPoint)
+            }
         }
     }
     
@@ -267,15 +296,19 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
         return result
     }
     
-//    func toPlanDetailView() {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "PlanDetailViewController", bundle: nil)
-//        let PlanDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController")
-//        self.present(PlanDetailViewController, animated: true, completion: nil)
-//        print("yes")
-//    }
-//
-    func test() {
-        print("hi")
+    func toPlanDetailView() {
+        
     }
 
+
 }
+
+
+extension DetailViewController: PlanCustomViewTransitionDelegate{
+    func test() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let planDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController")
+        self.present(planDetailViewController, animated: true, completion: nil)
+    }
+}
+

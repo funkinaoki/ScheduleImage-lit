@@ -26,6 +26,11 @@ class CreateViewController: UIViewController {
         startPoint = Date()
         label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         
+        //アニメーションするためにこれ入れる
+        self.lineLeft.alpha = 0.0
+        self.backAndNextButton.alpha = 0.0
+        
+        print(nextButton.tintColor!)
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
@@ -44,17 +49,35 @@ class CreateViewController: UIViewController {
          //次の画面に遷移した証
         secondDisplay = !secondDisplay
         //ボタンを非表示&表示
-        nextButton.isHidden = true
-        backAndNextButton.isHidden = false
-        //線の位置を変える
-        lineRight.isHidden = true
-        lineLeft.isHidden = false
+        
+        //アニメーション
+        UIView.animate(withDuration: 0.1, animations: {
+            self.nextButton.alpha = 0.0
+        }, completion:  { _ in
+            self.nextButton.isHidden = true
+        })
+        //falseにするやつは先
+        self.backAndNextButton.isHidden = false
+        self.lineLeft.isHidden = false
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.backAndNextButton.alpha = 1.0
+            self.lineLeft.alpha = 1.0
+            self.lineRight.alpha = 0.0
+        }, completion:  { _ in
+            self.lineRight.isHidden = true
+        })
         //説明文変える
         discription.text = "スケジュールの終了日を選択してください。"
-        //ラベルリセット
-        label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
+        
+        
         //datePickerの最小値を設定
-        datePicker.minimumDate = startPoint
+        datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: startPoint)!
+        
+        //ラベルリセット
+        label.text = DateUtils.stringFromDate(date: datePicker.minimumDate!, format: "yyyy/MM/dd")
+        //それを登録
+        endPoint = datePicker.minimumDate
         
     }
     
@@ -66,11 +89,23 @@ class CreateViewController: UIViewController {
         //前に戻った証
         secondDisplay = !secondDisplay
         //ボタンを非表示&表示
-        nextButton.isHidden = false
-        backAndNextButton.isHidden = true
-        //線の位置を変える
-        lineRight.isHidden = false
-        lineLeft.isHidden = true
+        
+        
+        
+        self.nextButton.isHidden = false
+        self.lineRight.isHidden = false
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.nextButton.alpha = 1.0
+            self.lineLeft.alpha = 0.0
+            self.lineRight.alpha = 1.0
+            self.backAndNextButton.alpha = 0.0
+        }, completion: { _ in
+            self.lineLeft.isHidden = true
+            self.backAndNextButton.isHidden = true
+        })
+        
+        
         //説明文変える
         discription.text = "今から作成する\nスケジュールの開始日を選択してください。"
         //ラベルリセット
@@ -79,6 +114,8 @@ class CreateViewController: UIViewController {
         datePicker.date = startPoint
         //datePickerの最小値をリセット
         datePicker.minimumDate = nil
+        
+        
     }
     
     func toResultView() {

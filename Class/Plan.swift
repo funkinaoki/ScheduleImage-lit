@@ -29,6 +29,5 @@ struct Plan: Codable{
             print(error.localizedDescription)
         }
     }
-    
 
 }

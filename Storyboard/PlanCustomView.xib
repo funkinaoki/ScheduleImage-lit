@@ -18,45 +18,68 @@
                     <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nf4-on-exK">
-                            <rect key="frame" x="0.0" y="13.5" width="200" height="3"/>
-                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            <rect key="frame" x="0.0" y="5" width="200" height="3"/>
+                            <color key="backgroundColor" red="0.270588249" green="0.36470589040000001" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="3" id="ZGT-fx-838"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctP-33-c7h">
-                            <rect key="frame" x="0.0" y="9" width="3" height="12"/>
-                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            <rect key="frame" x="1" y="0.0" width="3" height="8"/>
+                            <color key="backgroundColor" red="0.270588249" green="0.36470589040000001" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="12" id="JBR-UB-gS4"/>
                                 <constraint firstAttribute="width" constant="3" id="bwC-8W-rgO"/>
+                                <constraint firstAttribute="height" constant="8" id="p5I-61-8y6"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4E9-Ke-VPF">
-                            <rect key="frame" x="197" y="9" width="3" height="12"/>
-                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            <rect key="frame" x="196" y="0.0" width="3" height="8"/>
+                            <color key="backgroundColor" red="0.270588249" green="0.36470589040000001" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="12" id="YQh-cD-GGu"/>
+                                <constraint firstAttribute="height" constant="8" id="YQh-cD-GGu"/>
                                 <constraint firstAttribute="width" constant="3" id="zdP-Lo-0Hk"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LN5-tf-inG">
-                            <rect key="frame" x="86.5" y="20" width="27" height="12"/>
+                            <rect key="frame" x="86.5" y="10" width="27" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-HP-7KD">
+                            <rect key="frame" x="1" y="5" width="3" height="8"/>
+                            <color key="backgroundColor" red="0.270588249" green="0.36470589040000001" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="3" id="1A2-5I-YMc"/>
+                                <constraint firstAttribute="width" constant="3" id="3Vx-pJ-pqe"/>
+                                <constraint firstAttribute="height" constant="8" id="5hI-Hd-kmG"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="ct9-Gz-OlD"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ahg-Lj-osl">
+                            <rect key="frame" x="196" y="5" width="3" height="8"/>
+                            <color key="backgroundColor" red="0.270588249" green="0.36470589040000001" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="3" id="P5I-vT-E1P"/>
+                                <constraint firstAttribute="height" constant="8" id="UbS-My-HQw"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.94117647410000005" green="0.87843137979999997" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="Nf4-on-exK" firstAttribute="centerY" secondItem="wvj-vR-REn" secondAttribute="centerY" id="93g-Ck-PlH"/>
+                        <constraint firstItem="ctP-33-c7h" firstAttribute="top" secondItem="wvj-vR-REn" secondAttribute="top" id="3dE-SC-BjW"/>
                         <constraint firstItem="LN5-tf-inG" firstAttribute="centerX" secondItem="wvj-vR-REn" secondAttribute="centerX" id="BLh-dy-zHk"/>
-                        <constraint firstItem="LN5-tf-inG" firstAttribute="top" secondItem="Nf4-on-exK" secondAttribute="bottom" constant="3.5" id="M95-G8-Aex"/>
-                        <constraint firstItem="4E9-Ke-VPF" firstAttribute="centerY" secondItem="wvj-vR-REn" secondAttribute="centerY" id="TGs-sE-gtS"/>
-                        <constraint firstItem="ctP-33-c7h" firstAttribute="leading" secondItem="wvj-vR-REn" secondAttribute="leading" id="V5d-dw-5Fd"/>
+                        <constraint firstItem="Ahg-Lj-osl" firstAttribute="top" secondItem="wvj-vR-REn" secondAttribute="top" constant="5" id="F3b-4Y-JLh"/>
+                        <constraint firstItem="LN5-tf-inG" firstAttribute="top" secondItem="Nf4-on-exK" secondAttribute="bottom" constant="2" id="M95-G8-Aex"/>
+                        <constraint firstItem="9dI-HP-7KD" firstAttribute="leading" secondItem="wvj-vR-REn" secondAttribute="leading" constant="1" id="OLj-ga-exP"/>
+                        <constraint firstAttribute="trailing" secondItem="Ahg-Lj-osl" secondAttribute="trailing" constant="1" id="SWS-i3-l2T"/>
+                        <constraint firstItem="4E9-Ke-VPF" firstAttribute="top" secondItem="wvj-vR-REn" secondAttribute="top" id="Uv2-1B-bvS"/>
+                        <constraint firstItem="ctP-33-c7h" firstAttribute="leading" secondItem="wvj-vR-REn" secondAttribute="leading" constant="1" id="V5d-dw-5Fd"/>
                         <constraint firstAttribute="trailing" secondItem="Nf4-on-exK" secondAttribute="trailing" id="XKR-eg-6I5"/>
-                        <constraint firstItem="ctP-33-c7h" firstAttribute="centerY" secondItem="wvj-vR-REn" secondAttribute="centerY" id="Zgz-yS-bbY"/>
-                        <constraint firstAttribute="trailing" secondItem="4E9-Ke-VPF" secondAttribute="trailing" id="fqe-Y9-z50"/>
+                        <constraint firstItem="Nf4-on-exK" firstAttribute="top" secondItem="wvj-vR-REn" secondAttribute="top" constant="5" id="fY6-5c-zNt"/>
+                        <constraint firstAttribute="trailing" secondItem="4E9-Ke-VPF" secondAttribute="trailing" constant="1" id="fqe-Y9-z50"/>
+                        <constraint firstAttribute="bottom" secondItem="LN5-tf-inG" secondAttribute="bottom" constant="3" id="nnb-bu-j6v"/>
+                        <constraint firstItem="9dI-HP-7KD" firstAttribute="top" secondItem="wvj-vR-REn" secondAttribute="top" constant="5" id="qbc-p3-6yo"/>
                         <constraint firstItem="Nf4-on-exK" firstAttribute="leading" secondItem="wvj-vR-REn" secondAttribute="leading" id="rJf-xM-ACD"/>
                     </constraints>
                 </view>
@@ -71,17 +94,18 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="leftDownBar" destination="9dI-HP-7KD" id="bHU-x7-xdD"/>
+                <outlet property="leftTopBar" destination="ctP-33-c7h" id="hDp-VS-CRb"/>
                 <outlet property="nameLabel" destination="LN5-tf-inG" id="48R-vg-5Hy"/>
+                <outlet property="rightDownBar" destination="Ahg-Lj-osl" id="1ey-Ac-CEA"/>
+                <outlet property="rightTopBar" destination="4E9-Ke-VPF" id="efd-5w-4UQ"/>
             </connections>
-            <point key="canvasLocation" x="81.538461538461533" y="86.018957345971558"/>
+            <point key="canvasLocation" x="81.159420289855078" y="85.714285714285708"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

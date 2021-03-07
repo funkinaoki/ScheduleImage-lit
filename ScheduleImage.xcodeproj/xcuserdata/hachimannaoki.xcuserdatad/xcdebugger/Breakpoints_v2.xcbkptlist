@@ -20,5 +20,113 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E58479D-4171-442B-A417-F68BCA6FAD70"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewController/CreatePlanViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "CreatePlanViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "8E58479D-4171-442B-A417-F68BCA6FAD70 - 64605e4e67fed195"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScheduleImage.CreatePlanViewController.nextButton.getter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "ScheduleImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hachimannaoki/Downloads/lifeistech/ScheduleImage/ViewController/CreatePlanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "8E58479D-4171-442B-A417-F68BCA6FAD70 - 25336d795370a199"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScheduleImage.CreatePlanViewController.nextButton.setter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "ScheduleImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hachimannaoki/Downloads/lifeistech/ScheduleImage/ViewController/CreatePlanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "8E58479D-4171-442B-A417-F68BCA6FAD70 - 4f9df0af5c57ab44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScheduleImage.CreatePlanViewController.nextButton.modify : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "ScheduleImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hachimannaoki/Downloads/lifeistech/ScheduleImage/ViewController/CreatePlanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "8E58479D-4171-442B-A417-F68BCA6FAD70 - 764ef42c89613386"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScheduleImage.CreatePlanViewController.nextButton.modify : Swift.Optional&lt;__C.UIButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "ScheduleImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hachimannaoki/Downloads/lifeistech/ScheduleImage/ViewController/CreatePlanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "8E58479D-4171-442B-A417-F68BCA6FAD70 - 142f701932a9d84c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScheduleImage.CreatePlanViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; ScheduleImage.CreatePlanViewController"
+                  moduleName = "ScheduleImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hachimannaoki/Downloads/lifeistech/ScheduleImage/ViewController/CreatePlanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "964">
+               </Location>
+               <Location
+                  uuid = "8E58479D-4171-442B-A417-F68BCA6FAD70 - 96a2a8527fdbf2fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScheduleImage.CreatePlanViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ScheduleImage.CreatePlanViewController&gt;"
+                  moduleName = "ScheduleImage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hachimannaoki/Downloads/lifeistech/ScheduleImage/ViewController/CreatePlanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "932">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
