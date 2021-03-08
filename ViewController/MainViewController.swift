@@ -23,12 +23,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ScheduleViewCell", bundle: nil), forCellReuseIdentifier: "ScheduleViewCell")
-//        print(database.schedules)
+        
 //        print(UserDefaults.standard.dictionaryRepresentation().filter { $0.key.hasPrefix("schedules") })
+        
         currentSchedules = database.schedules
-        
-        
-        self.navigationController?.navigationBar.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:300)
 
         
     }
@@ -37,6 +35,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(true)
         database = Database()
         tableView.reloadData()
+        
+        if currentSchedules.count == 0 {
+            let image = UIImageView(image:  UIImage(systemName: "arrow.down"))
+            image.frame = CGRect(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 160, width: 50, height: 60)
+            image.tintColor = UIColor.black
+            
+            let text = UILabel()
+            text.text = "カレンダーを追加してください。"
+            text.textColor =  UIColor.black
+            text.frame.size = CGSize(width: 300, height: 100)
+            text.textAlignment = NSTextAlignment.center
+            text.center = CGPoint(x: self.view.frame.width / 2 , y: self.view.frame.height - 170)
+            
+            self.view.addSubview(image) // ラベルの追加
+            self.view.addSubview(text)
+            
+
+            
+        }
     }
     
     
@@ -103,6 +120,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             super.setEditing(false, animated: true)
             tableView.setEditing(false, animated: true)
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "編集", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editButton))
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             
         } else {
             super.setEditing(true, animated: true)

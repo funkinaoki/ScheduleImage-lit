@@ -9,7 +9,7 @@ import UIKit
 
 
 
-class DetailViewController: UIViewController{
+class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate{
     
     @IBOutlet weak var startPoint: UILabel!
     @IBOutlet weak var endPoint: UILabel!
@@ -48,7 +48,6 @@ class DetailViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         database = Database()
-        print("ff")
         startPoint.text = DateUtils.stringFromDate(date: detailSchedule.startPoint, format: "yyyy \n MM/dd")
         endPoint.text = DateUtils.stringFromDate(date: detailSchedule.endPoint, format: "yyyy \n MM/dd")
         topLabel.title = detailSchedule.name
@@ -61,15 +60,10 @@ class DetailViewController: UIViewController{
         alreadyDays.append(detailSchedule.startPoint)
         alreadyDays.append(detailSchedule.endPoint)
         
-        // デリゲートプロパティにこのクラスを設定
-//        planCustom.delegate = self
-        
-        
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         
     }
     
@@ -78,12 +72,13 @@ class DetailViewController: UIViewController{
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-//        let viewController = DetailViewController()
-//
-//        for subview in self.view.subviews {
-//            subview.removeFromSuperview()
-//        }
-//        self.loadView()
+        
+        floorDays.removeAll()
+
+        for subview in self.view.subviews {
+            subview.removeFromSuperview()
+        }
+        self.loadView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,7 +99,6 @@ class DetailViewController: UIViewController{
         //そうじゃないの
         plansDifferentDate = database.plans.filter { $0.scheduleID == detailSchedule.id && $0.startPoint != $0.endPoint}
         plansDifferentDate.sort(by: {$0.distanceDate < $1.distanceDate})
-        print(plansDifferentDate.count)
         
         //１日イベント
         plansSameDate = database.plans.filter { $0.scheduleID == detailSchedule.id && $0.startPoint == $0.endPoint}
@@ -114,7 +108,6 @@ class DetailViewController: UIViewController{
         for n in 0..<plansDifferentDate.count {
             let allPlanDays = getDaysArray(startPoint: plansDifferentDate[n].startPoint, endPoint: plansDifferentDate[n].endPoint, max: 1000)
             allPlansDays.append(allPlanDays)
-            
         }
         
         //ここからfloor
@@ -130,6 +123,8 @@ class DetailViewController: UIViewController{
                         }
                     }
                 }
+                
+                print(plansDifferentDate[n].floor)
                 //やっとfloorと被らなくなり、地獄のfloorfor文を抜け出せても仕事が残っているぞおお
                 //１、それは自分の階層データが存在しなければ追加すること
                 if floorDays.count - 1 < plansDifferentDate[n].floor {
@@ -140,7 +135,8 @@ class DetailViewController: UIViewController{
             }
         }
         
-        //その回数分viewを呼び出す
+        
+        //１日イベント以外のpurannwo回数分viewを呼び出す
         for n in 0..<plansDifferentDate.count {
             
             //planの開始日と終了日を定義するよー
@@ -166,7 +162,7 @@ class DetailViewController: UIViewController{
                                       height: 30)
         
             self.view.addSubview(customView)
-            customView.labelModify(name: plansDifferentDate[n].name)
+            customView.labelModify(plan: plansDifferentDate[n])
             
             ///ここからUILabelの設定
             
@@ -191,6 +187,16 @@ class DetailViewController: UIViewController{
                 
                 self.view.addSubview(startPointPlanLabel) // ラベルの追加
                 alreadyDays.append(plansDifferentDate[n].startPoint) //自分の追加
+                
+                //dotの追加
+                let startPointDot = UIImageView(image: UIImage(systemName: "circle.fill"))
+                startPointDot.tintColor = UIColor.black
+                
+                
+                startPointDot.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - 5, y: self.view.frame.height/2 - 5, width: 10, height: 10)
+                
+                self.view.addSubview(startPointDot)
+                
             
             }
             
@@ -214,6 +220,16 @@ class DetailViewController: UIViewController{
                 
                 
                 alreadyDays.append(plansDifferentDate[n].endPoint)
+                
+                //dotの追加
+                let endPointDot = UIImageView(image: UIImage(systemName: "circle.fill"))
+                endPointDot.tintColor = UIColor.black
+                
+                
+                endPointDot.frame = CGRect(x: CGFloat(startPointLength) + CGFloat(planLength) + scheduleView.frame.minX - 5, y: self.view.frame.height/2 - 5, width: 10, height: 10)
+                
+                // UIImageViewを追加
+                self.view.addSubview(endPointDot)
                 
             }
         }
@@ -247,6 +263,7 @@ class DetailViewController: UIViewController{
             self.view.addSubview(customView)
             customView.labelModify(name: plansSameDate[n].name)
             
+            //すでにその日付があったらそのラベルは要らない
             if !alreadyDays.contains(plansSameDate[n].startPoint) {
             
                 //UILABEL
@@ -257,7 +274,6 @@ class DetailViewController: UIViewController{
                 startPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansSameDate[n].startPoint!, format: "MM/dd"))" // テキストの設定
                 startPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
                 startPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
-    //                startPointPlanLabel.backgroundColor = UIColor.lightGray
                 
                 //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
                 let frameStart = CGSize(width: 200, height: 200)
@@ -267,6 +283,15 @@ class DetailViewController: UIViewController{
                 
                 self.view.addSubview(startPointPlanLabel) // ラベルの追加
                 alreadyDays.append(plansSameDate[n].startPoint)
+                
+                
+                //dotの追加
+                let oneDayStartPointDot = UIImageView(image: UIImage(systemName: "circle.fill"))
+                oneDayStartPointDot.tintColor = UIColor.black
+                
+                oneDayStartPointDot.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - 5, y: self.view.frame.height/2 - 5, width: 10, height: 10)
+                
+                self.view.addSubview(oneDayStartPointDot)
             }
         }
     }
@@ -281,7 +306,6 @@ class DetailViewController: UIViewController{
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
 
         for i in 0 ..< max {
-
             components.setValue(i,for: Calendar.Component.day)
             let wk = calendar.date(byAdding: components, to: startPoint)!
             let wkStr = DateUtils.stringFromDate(date: wk, format: "yyyy/MM/dd")
@@ -291,24 +315,26 @@ class DetailViewController: UIViewController{
                 result.append(wkStr)
             }
         }
-        result.removeFirst()
-        result.removeLast()
+        
+        if result.count != 3 {
+            result.removeLast()
+        }
         return result
     }
     
-    func toPlanDetailView() {
-        
-    }
-
-
-}
-
-
-extension DetailViewController: PlanCustomViewTransitionDelegate{
-    func test() {
+    //delegateメソッド
+    func test(plan: Plan) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let planDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController")
+        let planDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController") as! PlanDetailViewController
+        planDetailViewController.plan = plan
+        planDetailViewController.detailSchedule = detailSchedule
         self.present(planDetailViewController, animated: true, completion: nil)
     }
+    
+
+
 }
+
+
+
 

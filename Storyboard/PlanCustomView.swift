@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PlanCustomViewTransitionDelegate {
-    func test()
+    func test(plan: Plan)
 }
 
 
@@ -22,6 +22,7 @@ class PlanCustomView: UIView {
     
     // デリゲートプロトコルを参照するプロパティ（オプショナルにし、ここでは値を入れない）
     var delegate: PlanCustomViewTransitionDelegate?
+    var thisPlan: Plan!
     
     
     override init(frame: CGRect){
@@ -38,13 +39,16 @@ class PlanCustomView: UIView {
     func initView(){
     }
     
-    func labelModify(name: String) {
-        nameLabel.text = name
+    func labelModify(plan: Plan) {
+        nameLabel.text = plan.name
         leftTopBar.transform = CGAffineTransform(rotationAngle: .pi * 0.2)
         leftDownBar.transform = CGAffineTransform(rotationAngle: .pi * 0.7)
         
         rightTopBar.transform = CGAffineTransform(rotationAngle: .pi * 0.7)
         rightDownBar.transform = CGAffineTransform(rotationAngle: .pi * 0.2)
+        
+        //編集画面で使うために後世の役に立つぞ！
+        thisPlan = plan
     
     }
     
@@ -53,7 +57,7 @@ class PlanCustomView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.test()
+        delegate?.test(plan: thisPlan)
         print("no")
     }
 
