@@ -28,6 +28,7 @@
 		CCAA02A025EBC40E00993740 /* PlanCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCAA029F25EBC40E00993740 /* PlanCustomView.xib */; };
 		CCE205C425F1176800EA7E83 /* OneDayPlanCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCE205C325F1176800EA7E83 /* OneDayPlanCustomView.xib */; };
 		CCE205CC25F1179F00EA7E83 /* OneDayPlanCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE205CB25F1179F00EA7E83 /* OneDayPlanCustomView.swift */; };
+		CCE6671925F8ADAB00F896FC /* DateDifferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE6671825F8ADAB00F896FC /* DateDifferences.swift */; };
 		CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */; };
 		CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */; };
 		CCEBACFA25EA42B70028BAD5 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF925EA42B70028BAD5 /* Schedule.swift */; };
@@ -82,6 +83,7 @@
 		CCAA029F25EBC40E00993740 /* PlanCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanCustomView.xib; sourceTree = "<group>"; };
 		CCE205C325F1176800EA7E83 /* OneDayPlanCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneDayPlanCustomView.xib; sourceTree = "<group>"; };
 		CCE205CB25F1179F00EA7E83 /* OneDayPlanCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayPlanCustomView.swift; sourceTree = "<group>"; };
+		CCE6671825F8ADAB00F896FC /* DateDifferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferences.swift; sourceTree = "<group>"; };
 		CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
 		CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
 		CCEBACF925EA42B70028BAD5 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -175,12 +177,12 @@
 			children = (
 				CC4A011025E901D0009D1AC9 /* ViewController.swift */,
 				CC4A011125E901D0009D1AC9 /* MainViewController.swift */,
-				CC4A011225E901D0009D1AC9 /* CreateViewController.swift */,
 				CC4A011925E901E7009D1AC9 /* DetailViewController.swift */,
+				CC14F47725F247EA00E8A6BE /* PlanDetailViewController.swift */,
+				CC4A011225E901D0009D1AC9 /* CreateViewController.swift */,
 				CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */,
 				CCAA029025EBA21400993740 /* CreatePlanViewController.swift */,
 				CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */,
-				CC14F47725F247EA00E8A6BE /* PlanDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -208,6 +210,7 @@
 				CCEBAD1025EB5E4F0028BAD5 /* Plan.swift */,
 				CC14F4A125F3A32400E8A6BE /* Navigation.swift */,
 				CC14F4A625F3A3BB00E8A6BE /* NavigationViewController.swift */,
+				CCE6671825F8ADAB00F896FC /* DateDifferences.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				CC4A00D525E8FAD7009D1AC9 /* ScheduleImage.xcdatamodeld in Sources */,
 				CCEBAD0725EA6E690028BAD5 /* DateUtills.swift in Sources */,
 				CC14F4A725F3A3BB00E8A6BE /* NavigationViewController.swift in Sources */,
+				CCE6671925F8ADAB00F896FC /* DateDifferences.swift in Sources */,
 				CC14F47825F247EA00E8A6BE /* PlanDetailViewController.swift in Sources */,
 				CC14F4A225F3A32400E8A6BE /* Navigation.swift in Sources */,
 				CCAA029125EBA21400993740 /* CreatePlanViewController.swift in Sources */,

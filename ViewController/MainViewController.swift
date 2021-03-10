@@ -37,6 +37,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
         
         if currentSchedules.count == 0 {
+            
             let image = UIImageView(image:  UIImage(systemName: "arrow.down"))
             image.frame = CGRect(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 160, width: 50, height: 60)
             image.tintColor = UIColor.black
@@ -51,6 +52,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.addSubview(image) // ラベルの追加
             self.view.addSubview(text)
             
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
+                    image.center.y += 20.0
+                }) { _ in
+                    image.center.y -= 20.0
+                }
 
             
         }
@@ -70,8 +76,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailSchedule = database.schedules[indexPath.row]
-        performSegue(withIdentifier: "toDetailView", sender: nil)
+        if isEditing {
+            print("flu")
+        } else {
+            detailSchedule = database.schedules[indexPath.row]
+            performSegue(withIdentifier: "toDetailView", sender: nil)
+        }
     }
     
     //並び替え

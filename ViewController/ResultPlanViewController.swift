@@ -33,8 +33,17 @@ class ResultPlanViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func create(_ sender: Any) {
         if nameTextField.text != "" {
-            distanceDate = Float(Calendar.current.dateComponents([.day], from: startPoint, to: endPoint).day!)
-            let newPlan = Plan(name: nameTextField.text, startPoint: startPoint, endPoint: endPoint, distanceDate: distanceDate, scheduleID: detailSchedule.id)
+            let calendar = Calendar(identifier: .gregorian)
+            startPoint = DateDifferences.roundDate(startPoint, calendar: calendar)
+            endPoint = DateDifferences.roundDate(endPoint, calendar: calendar)
+            distanceDate = Float(DateDifferences.calcDateRemainder(firstDate: endPoint,
+                                                                   secondDate: startPoint))
+            
+            let newPlan = Plan(name: nameTextField.text,
+                               startPoint: startPoint,
+                               endPoint: endPoint,
+                               distanceDate: distanceDate,
+                               scheduleID: detailSchedule.id)
             newPlan.save()
             self.navigationController?.popToRootViewController(animated: true)
         }

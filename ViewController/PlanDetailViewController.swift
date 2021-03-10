@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol EditPlanProtocol {
+    func viewDidDismiss(thisSchedule: Schedule!)
+}
+
 class PlanDetailViewController: UIViewController {
+    
+    var delegate: EditPlanProtocol?
 
     @IBOutlet weak var startPointLabel: UIButton!
     
@@ -35,6 +41,8 @@ class PlanDetailViewController: UIViewController {
         datePicker.isHidden = true
         startPoint = plan.startPoint
         endPoint = plan.endPoint
+        
+
     }
     
     @IBAction func startPointButton(_ sender: Any) {
@@ -70,13 +78,20 @@ class PlanDetailViewController: UIViewController {
     
     
     @IBAction func saveButton(_ sender: Any) {
+        let calendar = Calendar(identifier: .gregorian)
+        //日時を00:00にする
+        startPoint = DateDifferences.roundDate(startPoint, calendar: calendar)
+        endPoint = DateDifferences.roundDate(endPoint, calendar: calendar)
         plan.startPoint = startPoint
         plan.endPoint = endPoint
         plan.name = nameField.text
-        plan.distanceDate = Float(Calendar.current.dateComponents([.day], from: startPoint, to: endPoint).day!)
+        plan.distanceDate = Float(DateDifferences.calcDateRemainder(firstDate: endPoint, secondDate: startPoint))
+        plan.floor = 0
         plan.save()
+        delegate?.viewDidDismiss(thisSchedule: detailSchedule)
         dismiss(animated: true, completion: nil)
         
     }
     
 }
+

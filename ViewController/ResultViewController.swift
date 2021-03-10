@@ -31,7 +31,10 @@ class ResultViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func create(_ sender: Any) {
         if nameTextField.text != "" {
-            let newSchedule = Schedule(name: nameTextField.text, startPoint: startPoint, endPoint: endPoint)
+            let calendar = Calendar(identifier: .gregorian)
+            let newSchedule = Schedule(name: nameTextField.text,
+                                       startPoint: DateDifferences.roundDate(startPoint, calendar: calendar),
+                                       endPoint: DateDifferences.roundDate(endPoint, calendar: calendar))
             newSchedule.save()
             self.dismiss(animated: true, completion: nil)
         }

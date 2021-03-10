@@ -85,12 +85,11 @@ class CreateViewController: UIViewController {
         toResultView()
     }
     
+    
     @IBAction func back(_ sender: Any) {
         //前に戻った証
         secondDisplay = !secondDisplay
         //ボタンを非表示&表示
-        
-        
         
         self.nextButton.isHidden = false
         self.lineRight.isHidden = false

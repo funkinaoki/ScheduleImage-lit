@@ -42,16 +42,20 @@ class CreatePlanViewController: UIViewController {
         startPoint = datePicker.date
         label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         
-        
+        //アニメーションするためにこれ入れる
+        self.lineLeft.alpha = 0.0
+        self.backAndNextButton.alpha = 0.0
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         //ラベルを選択した日付にする
         if secondDisplay == false {
             startPoint = sender.date
+            print(sender.date)
             label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         } else {
             endPoint = sender.date
+            print(sender.date)
             label.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
         }
     }
@@ -59,12 +63,23 @@ class CreatePlanViewController: UIViewController {
     @IBAction func next(_ sender: Any) {
         //次の画面に遷移した証
         secondDisplay = !secondDisplay
-        //ボタンを非表示&表示
-        nextButton.isHidden = true
-        backAndNextButton.isHidden = false
-        //線の位置を変える
-        lineRight.isHidden = true
-        lineLeft.isHidden = false
+        //アニメーション
+        UIView.animate(withDuration: 0.1, animations: {
+            self.nextButton.alpha = 0.0
+        }, completion:  { _ in
+            self.nextButton.isHidden = true
+        })
+        //falseにするやつは先
+        self.backAndNextButton.isHidden = false
+        self.lineLeft.isHidden = false
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.backAndNextButton.alpha = 1.0
+            self.lineLeft.alpha = 1.0
+            self.lineRight.alpha = 0.0
+        }, completion:  { _ in
+            self.lineRight.isHidden = true
+        })
         //説明文変える
         discription.text = "予定の終了日を選択してください。"
         
@@ -84,10 +99,18 @@ class CreatePlanViewController: UIViewController {
         secondDisplay = !secondDisplay
         //ボタンを非表示&表示
         nextButton.isHidden = false
-        backAndNextButton.isHidden = true
-        //線の位置を変える
         lineRight.isHidden = false
-        lineLeft.isHidden = true
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.nextButton.alpha = 1.0
+            self.lineLeft.alpha = 0.0
+            self.lineRight.alpha = 1.0
+            self.backAndNextButton.alpha = 0.0
+        }, completion: { _ in
+            self.lineLeft.isHidden = true
+            self.backAndNextButton.isHidden = true
+        })
+        
         //説明文変える
         discription.text = "予定の開始日を選択してください。"
         //ラベルリセット
