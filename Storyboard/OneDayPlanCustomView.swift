@@ -9,6 +9,8 @@ import UIKit
 
 class OneDayPlanCustomView: UIView {
     
+    var delegate: PlanCustomViewTransitionDelegate?
+    var thisPlan: Plan!
     @IBOutlet weak var nameLabel: UILabel!
     
     override init(frame: CGRect){
@@ -25,12 +27,15 @@ class OneDayPlanCustomView: UIView {
 
     }
 
-    func labelModify(name: String) {
-        nameLabel.text = name
+    func labelModify(plan: Plan) {
+        nameLabel.text = plan.name
+        thisPlan = plan
     }
-
-    @IBAction func actionCloseView(_ sender: Any) {
-        self.removeFromSuperview()
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+ 
+        delegate?.test(plan: thisPlan)
     }
+    
 
 }

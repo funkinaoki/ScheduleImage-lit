@@ -90,7 +90,6 @@ extension Database {
     private func getSchedulesData() -> [Schedule] {
         guard let items = UserDefaults.standard.array(forKey: "schedules") as? [Data] else { return[] }
         let decodedItems = items.map { try! JSONDecoder().decode(Schedule.self, from: $0) }
-        print(decodedItems)
         return decodedItems
         
     }

@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol EditScheduleProtocol {
-    func viewDidDismiss()
-}
-
-class EditScheduleViewController: UIViewController {
+class EditScheduleViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: EditScheduleProtocol?
 
@@ -26,8 +22,11 @@ class EditScheduleViewController: UIViewController {
     var startPoint: Date!
     var endPoint: Date!
     
+    var database: Database!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        database = Database()
         
         startPointLabel.setTitle(DateUtils.stringFromDate(date: detailSchedule.startPoint, format: "yy/MM/dd"), for: .normal)
         endPointLabel.setTitle(DateUtils.stringFromDate(date: detailSchedule.endPoint, format: "yy/MM/dd"), for: .normal)
@@ -37,6 +36,7 @@ class EditScheduleViewController: UIViewController {
         datePicker.isHidden = true
         startPoint = detailSchedule.startPoint
         endPoint = detailSchedule.endPoint
+        titleField.delegate = self
 
     }
     
@@ -78,8 +78,39 @@ class EditScheduleViewController: UIViewController {
     }
     
     @IBAction func deleteButton(_ sender: Any) {
+        let alert: UIAlertController = UIAlertController(title:"確認", message: "削除してもよろしいでしょうか。", preferredStyle: .alert)
+        
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            //DB削除
+            //schedule
+            let willDeleteSchedule = self.database.schedules.first( where: { $0.id == self.detailSchedule.id })
+            willDeleteSchedule?.delete()
+            
+            //plan
+            let willDeletePlan = self.database.plans.filter({ $0.scheduleID == self.detailSchedule.id })
+            for (n,_) in willDeletePlan.enumerated() {
+                willDeletePlan[n].delete()
+            }
+            self.delegate?.viewDidDismiss()
+            self.dismiss(animated: true, completion: nil)
 
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+        })
+        
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleField.resignFirstResponder()
+        return true
+    }
 
 }

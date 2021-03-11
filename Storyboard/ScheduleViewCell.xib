@@ -69,6 +69,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="backGroundColor" destination="H2p-sc-9uM" id="mKS-VX-tHa"/>
                 <outlet property="endPointLabel" destination="au8-Kd-HwJ" id="Qz1-Xb-dZl"/>
                 <outlet property="nameLabel" destination="AxT-yX-2tr" id="5i3-es-u7i"/>
                 <outlet property="startPointLabel" destination="hKc-Le-4J2" id="Zmm-yR-Lhj"/>

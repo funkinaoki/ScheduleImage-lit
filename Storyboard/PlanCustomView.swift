@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol PlanCustomViewTransitionDelegate {
-    func test(plan: Plan)
-}
+
 
 
 class PlanCustomView: UIView {

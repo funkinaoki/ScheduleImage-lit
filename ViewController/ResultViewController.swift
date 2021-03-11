@@ -9,6 +9,7 @@ import UIKit
 
 class ResultViewController: UIViewController, UITextFieldDelegate {
     
+    var delegate: CreateScheduleViewDelegate?
     
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
@@ -37,7 +38,14 @@ class ResultViewController: UIViewController, UITextFieldDelegate {
                                        startPoint: DateDifferences.roundDate(startPoint, calendar: calendar),
                                        endPoint: DateDifferences.roundDate(endPoint, calendar: calendar))
             newSchedule.save()
+            //一つ前の画面に戻る
             self.navigationController?.popToRootViewController(animated: true)
+            
+            //一つ前の画面で色々初期化。遅延させないと上のやつの処理が終わらない
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
+                self.delegate?.goBack()
+            }
+
         }
     }
     

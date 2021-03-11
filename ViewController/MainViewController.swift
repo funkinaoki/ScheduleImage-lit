@@ -14,54 +14,53 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var database: Database!
     var detailSchedule: Schedule!
     var currentSchedules: [Schedule] =  []
+    var image = UIImageView(image:  UIImage(systemName: "arrow.down"))
+    var text = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        database = Database()
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ScheduleViewCell", bundle: nil), forCellReuseIdentifier: "ScheduleViewCell")
         tableView.allowsSelectionDuringEditing = true
-//        print(UserDefaults.standard.dictionaryRepresentation().filter { $0.key.hasPrefix("schedules") })
         
-        currentSchedules = database.schedules
-
+        //初期アニメーション
+        image.frame = CGRect(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 160, width: 50, height: 60)
+        image.tintColor = UIColor.black
+        
+        text.text = "カレンダーを追加してください。"
+        text.textColor =  UIColor.black
+        text.frame.size = CGSize(width: 300, height: 100)
+        text.textAlignment = NSTextAlignment.center
+        text.center = CGPoint(x: self.view.frame.width / 2 , y: self.view.frame.height - 170)
+        
+        self.view.addSubview(image) // ラベルの追加
+        self.view.addSubview(text)
+        animateArrow()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         database = Database()
         currentSchedules = database.schedules
         tableView.reloadData()
-        print("now")
         
-        //初期アニメーション
+        super.setEditing(false, animated: true)
+        tableView.setEditing(false, animated: true)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "編集", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editButton))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        
+        
         if currentSchedules.count == 0 {
-            
-            let image = UIImageView(image:  UIImage(systemName: "arrow.down"))
-            image.frame = CGRect(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 160, width: 50, height: 60)
-            image.tintColor = UIColor.black
-            
-            let text = UILabel()
-            text.text = "カレンダーを追加してください。"
-            text.textColor =  UIColor.black
-            text.frame.size = CGSize(width: 300, height: 100)
-            text.textAlignment = NSTextAlignment.center
-            text.center = CGPoint(x: self.view.frame.width / 2 , y: self.view.frame.height - 170)
-            
-            self.view.addSubview(image) // ラベルの追加
-            self.view.addSubview(text)
-            
-            UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
-                    image.center.y += 20.0
-                }) { _ in
-                    image.center.y -= 20.0
-                }
-
-            
+            print("true")
+            image.alpha = 1.0
+            text.alpha = 1.0
+        } else {
+            image.alpha = 0.0
+            text.alpha = 0.0
         }
     }
     
@@ -75,6 +74,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleViewCell", for: indexPath) as! ScheduleViewCell
         
         cell.setCell(schedule: currentSchedules[indexPath.row])
+
+        // 選択された背景色を白に設定
+        let cellSelectedBgView = UIView()
+        cellSelectedBgView.backgroundColor = UIColor.lightGray
+        cell.selectedBackgroundView = cellSelectedBgView
         return cell
     }
     
@@ -86,6 +90,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             performSegue(withIdentifier: "toDetailView", sender: nil)
         }
+
     }
     
     //並び替え
@@ -113,6 +118,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         for (n,_) in willDeletePlan.enumerated() {
             willDeletePlan[n].delete()
         }
+        
         //ローカル削除
         currentSchedules.remove(at: indexPath.row)
         
@@ -121,6 +127,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //ローカル変数更新
         currentSchedules = database.schedules
+        
+        viewWillAppear(true)
     }
     
     //削除ラベルのタイトルを変える
@@ -142,7 +150,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "完了", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editButton))
             navigationItem.leftBarButtonItem?.tintColor = UIColor.red
         }
-//        print(UserDefaults.standard.dictionaryRepresentation().filter { $0.key.hasPrefix("plans") })
     }
     
     
@@ -159,13 +166,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //プロトコルポップアップはviewwillappear呼ばれないから
     func viewDidDismiss() {
-        super.viewDidLoad()
-        database = Database()
-        currentSchedules = database.schedules
-        tableView.reloadData()
+        viewWillAppear(true)
+        print("ok")
     }
     
-
+    func animateArrow() {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
+            self.image.center.y += 20.0
+            }, completion: { finished in
+                self.image.center.y -= 20.0
+                self.animateArrow()
+        })
+    }
 
 }

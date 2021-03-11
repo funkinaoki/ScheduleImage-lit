@@ -13,6 +13,7 @@ class ScheduleViewCell: UITableViewCell {
     @IBOutlet weak var endPointLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var wakuLine: UILabel!
+    @IBOutlet weak var backGroundColor: UIView!
     
     var database: Database!
     
@@ -27,6 +28,12 @@ class ScheduleViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        if selected {
+            //押下時のセルの処理
+            backGroundColor.backgroundColor = UIColor.lightGray
+        }else{
+            backGroundColor.backgroundColor = UIColor.clear
+        }
 
     }
     

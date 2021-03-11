@@ -11,7 +11,6 @@ import UIKit
 
 class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, EditPlanProtocol{
     
-    
     @IBOutlet weak var startPoint: UILabel!
     @IBOutlet weak var endPoint: UILabel!
     @IBOutlet weak var plus: UIButton!
@@ -49,12 +48,6 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("yes")
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
         database = Database()
         
         startPointDate = detailSchedule.startPoint
@@ -62,31 +55,18 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
         
         scheduleDistanceDate = Float(DateDifferences.calcDateRemainder(firstDate: endPointDate, secondDate: startPointDate))
         
-        
         alreadyDays.append(detailSchedule.startPoint)
         alreadyDays.append(detailSchedule.endPoint)
-    
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         startPoint.text = DateUtils.stringFromDate(date: detailSchedule.startPoint, format: "yyyy \n MM/dd")
         endPoint.text = DateUtils.stringFromDate(date: detailSchedule.endPoint, format: "yyyy \n MM/dd")
         topLabel.title = detailSchedule.name
-        setPlans()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        plansSameDate.removeAll()
-        plansDifferentDate.removeAll()
-        alreadyDays.removeAll()
-        floorDays.removeAll()
-        for subview in self.view.subviews {
-            subview.removeFromSuperview()
+  
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.setPlans()
+
         }
-        self.loadView()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -204,11 +184,10 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
                 
             
             }
-            print(alreadyDays)
+            
+            
             if !alreadyDays.contains(plansDifferentDate[n].endPoint) {
                 
-                print("hy")
-    
                 // ここからendpointLabelの設定
                 let endPointPlanLabel = UILabel() // ラベルの生成
                 
@@ -259,6 +238,8 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
             
                 
             let customView = Bundle.main.loadNibNamed("OneDayPlanCustomView", owner: self, options: nil)?.first as! OneDayPlanCustomView
+            
+            customView.delegate = self
             //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
             let frameOneDay = CGSize(width: 500, height: 500)
             let rectOneDay = customView.sizeThatFits(frameOneDay)
@@ -269,7 +250,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
                                       height: rectOneDay.height)
         
             self.view.addSubview(customView)
-            customView.labelModify(name: plansSameDate[n].name)
+            customView.labelModify(plan: plansSameDate[n])
             
             //すでにその日付があったらそのラベルは要らない
             if !alreadyDays.contains(plansSameDate[n].startPoint) {
@@ -324,10 +305,8 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
                 result.append(wkStr)
             }
         }
-        
-        if result.count != 3 {
-            result.removeLast()
-        }
+        //最後だけは被ってもいいから
+        result.removeLast()
         return result
     }
     
@@ -344,11 +323,36 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
     }
     
     //delegate
-    func viewDidDismiss(thisSchedule: Schedule!) {
-        viewWillDisappear(true)
-        viewWillAppear(true)
-        viewDidAppear(true)
+    func viewDidDismiss() {
+        plansSameDate.removeAll()
+        plansDifferentDate.removeAll()
+        alreadyDays.removeAll()
+        floorDays.removeAll()
+        allPlansDays.removeAll()
         
+        for subview in self.view.subviews {
+            subview.removeFromSuperview()
+        }
+        self.loadView()
+        
+        database = Database()
+        
+        startPointDate = detailSchedule.startPoint
+        endPointDate = detailSchedule.endPoint
+        
+        scheduleDistanceDate = Float(DateDifferences.calcDateRemainder(firstDate: endPointDate, secondDate: startPointDate))
+        
+        
+        alreadyDays.append(detailSchedule.startPoint)
+        alreadyDays.append(detailSchedule.endPoint)
+        
+        self.startPoint.text = DateUtils.stringFromDate(date: self.detailSchedule.startPoint, format: "yyyy \n MM/dd")
+        self.endPoint.text = DateUtils.stringFromDate(date: self.detailSchedule.endPoint, format: "yyyy \n MM/dd")
+        self.topLabel.title = self.detailSchedule.name
+  
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.setPlans()
+        }
 
     }
     

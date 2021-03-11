@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol EditPlanProtocol {
-    func viewDidDismiss(thisSchedule: Schedule!)
-}
+
 
 class PlanDetailViewController: UIViewController {
     
@@ -30,6 +28,7 @@ class PlanDetailViewController: UIViewController {
     var detailSchedule: Schedule!
     var startPoint: Date!
     var endPoint: Date!
+    var database: Database!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +40,7 @@ class PlanDetailViewController: UIViewController {
         datePicker.isHidden = true
         startPoint = plan.startPoint
         endPoint = plan.endPoint
+        database = Database()
         
 
     }
@@ -70,10 +70,31 @@ class PlanDetailViewController: UIViewController {
             endPoint = datePicker.date
         }
     }
-    @IBAction func nameField(_ sender: Any) {
-    }
     
     @IBAction func deleteButton(_ sender: Any) {
+        
+        let alert: UIAlertController = UIAlertController(title:"確認", message: "削除してもよろしいでしょうか。", preferredStyle: .alert)
+        
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            //DB削除
+            //schedule
+            let willDeletePlan = self.database.plans.first( where: { $0.id == self.plan.id })
+            willDeletePlan?.delete()
+            self.delegate?.viewDidDismiss()
+            self.dismiss(animated: true, completion: nil)
+
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+        })
+        
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -88,7 +109,7 @@ class PlanDetailViewController: UIViewController {
         plan.distanceDate = Float(DateDifferences.calcDateRemainder(firstDate: endPoint, secondDate: startPoint))
         plan.floor = 0
         plan.save()
-        delegate?.viewDidDismiss(thisSchedule: detailSchedule)
+        delegate?.viewDidDismiss()
         dismiss(animated: true, completion: nil)
         
     }

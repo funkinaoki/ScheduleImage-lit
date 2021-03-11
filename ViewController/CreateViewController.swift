@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateViewController: UIViewController {
+class CreateViewController: UIViewController, CreateScheduleViewDelegate {
 
     @IBOutlet weak var discription: UILabel!
     @IBOutlet weak var label: UILabel!
@@ -29,9 +29,8 @@ class CreateViewController: UIViewController {
         //アニメーションするためにこれ入れる
         self.lineLeft.alpha = 0.0
         self.backAndNextButton.alpha = 0.0
-        
-        print(nextButton.tintColor!)
     }
+
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         if secondDisplay == false {
@@ -121,6 +120,37 @@ class CreateViewController: UIViewController {
             let resultView = segue.destination as!ResultViewController
             resultView.startPoint = self.startPoint
             resultView.endPoint = self.endPoint
+            resultView.delegate = self
         }
+    }
+    
+    //protocol
+    func goBack() {
+        secondDisplay = false
+        self.nextButton.isHidden = false
+        self.lineRight.isHidden = false
+        self.lineLeft.isHidden = true
+        self.backAndNextButton.isHidden = true
+        
+        self.lineLeft.alpha = 0.0
+        self.backAndNextButton.alpha = 0.0
+        self.lineRight.alpha = 1.0
+        self.nextButton.alpha = 1.0
+        
+        //説明文変える
+        discription.text = "今から作成する\nスケジュールの開始日を選択してください。"
+        //ラベルリセット
+        label.text = ""
+        //datePickerの最小値をリセット
+        datePicker.minimumDate = nil
+        
+        //ラベルとdateの初期値を設定
+        startPoint = Date()
+        datePicker.date = startPoint
+        label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
+        
+        let UINavigationController = self.tabBarController?.viewControllers?[0];
+        self.tabBarController?.selectedViewController = UINavigationController;
+        
     }
 }

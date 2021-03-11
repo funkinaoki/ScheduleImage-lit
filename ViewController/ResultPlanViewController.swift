@@ -9,6 +9,8 @@ import UIKit
 
 class ResultPlanViewController: UIViewController, UITextFieldDelegate {
 
+    var delegate: EditPlanProtocol?
+    
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -45,7 +47,13 @@ class ResultPlanViewController: UIViewController, UITextFieldDelegate {
                                distanceDate: distanceDate,
                                scheduleID: detailSchedule.id)
             newPlan.save()
-            self.navigationController?.popToRootViewController(animated: true)
+            
+            let count = (self.navigationController?.viewControllers.count)! - 3
+            let vcA = self.navigationController?.viewControllers[count]
+            self.delegate = vcA as? EditPlanProtocol
+
+            delegate?.viewDidDismiss()
+            navigationController?.popToViewController(navigationController!.viewControllers[1], animated: true)
         }
     }
     

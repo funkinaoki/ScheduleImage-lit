@@ -51,11 +51,9 @@ class CreatePlanViewController: UIViewController {
         //ラベルを選択した日付にする
         if secondDisplay == false {
             startPoint = sender.date
-            print(sender.date)
             label.text = DateUtils.stringFromDate(date: startPoint, format: "yyyy/MM/dd")
         } else {
             endPoint = sender.date
-            print(sender.date)
             label.text = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
         }
     }
