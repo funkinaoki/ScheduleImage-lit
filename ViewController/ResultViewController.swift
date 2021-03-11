@@ -9,6 +9,7 @@ import UIKit
 
 class ResultViewController: UIViewController, UITextFieldDelegate {
     
+    
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -36,7 +37,7 @@ class ResultViewController: UIViewController, UITextFieldDelegate {
                                        startPoint: DateDifferences.roundDate(startPoint, calendar: calendar),
                                        endPoint: DateDifferences.roundDate(endPoint, calendar: calendar))
             newSchedule.save()
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     

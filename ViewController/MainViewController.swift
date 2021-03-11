@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditScheduleProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +23,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ScheduleViewCell", bundle: nil), forCellReuseIdentifier: "ScheduleViewCell")
-        
+        tableView.allowsSelectionDuringEditing = true
 //        print(UserDefaults.standard.dictionaryRepresentation().filter { $0.key.hasPrefix("schedules") })
         
         currentSchedules = database.schedules
@@ -34,8 +34,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         database = Database()
+        currentSchedules = database.schedules
         tableView.reloadData()
+        print("now")
         
+        //初期アニメーション
         if currentSchedules.count == 0 {
             
             let image = UIImageView(image:  UIImage(systemName: "arrow.down"))
@@ -76,10 +79,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //受け渡しで使います
+        detailSchedule = database.schedules[indexPath.row]
         if isEditing {
-            print("flu")
+            performSegue(withIdentifier: "toEditScheduleView", sender: nil)
         } else {
-            detailSchedule = database.schedules[indexPath.row]
             performSegue(withIdentifier: "toDetailView", sender: nil)
         }
     }
@@ -148,6 +152,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let detailView = segue.destination as! DetailViewController
             detailView.detailSchedule = detailSchedule
         }
+        if segue.identifier == "toEditScheduleView" {
+            let detailView = segue.destination as! EditScheduleViewController
+            detailView.delegate = self
+            detailView.detailSchedule = detailSchedule
+        }
+    }
+    
+    func viewDidDismiss() {
+        super.viewDidLoad()
+        database = Database()
+        currentSchedules = database.schedules
+        tableView.reloadData()
     }
     
 

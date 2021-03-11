@@ -56,9 +56,6 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         
         database = Database()
-        startPoint.text = DateUtils.stringFromDate(date: detailSchedule.startPoint, format: "yyyy \n MM/dd")
-        endPoint.text = DateUtils.stringFromDate(date: detailSchedule.endPoint, format: "yyyy \n MM/dd")
-        topLabel.title = detailSchedule.name
         
         startPointDate = detailSchedule.startPoint
         endPointDate = detailSchedule.endPoint
@@ -68,13 +65,14 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
         
         alreadyDays.append(detailSchedule.startPoint)
         alreadyDays.append(detailSchedule.endPoint)
-        
-        setPlans()
-        print("yy")
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        startPoint.text = DateUtils.stringFromDate(date: detailSchedule.startPoint, format: "yyyy \n MM/dd")
+        endPoint.text = DateUtils.stringFromDate(date: detailSchedule.endPoint, format: "yyyy \n MM/dd")
+        topLabel.title = detailSchedule.name
+        setPlans()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -340,18 +338,18 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
         planDetailViewController.plan = plan
         planDetailViewController.detailSchedule = detailSchedule
         
-        let vc = DetailViewController()
-        planDetailViewController.delegate = vc
+        planDetailViewController.delegate = self
         
         self.present(planDetailViewController, animated: true, completion: nil)
     }
     
     //delegate
     func viewDidDismiss(thisSchedule: Schedule!) {
-        database = Database()
-        detailSchedule = thisSchedule
-        viewWillAppear(false)
-        setPlans()
+        viewWillDisappear(true)
+        viewWillAppear(true)
+        viewDidAppear(true)
+        
+
     }
     
 

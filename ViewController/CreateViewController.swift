@@ -82,9 +82,8 @@ class CreateViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        toResultView()
+        performSegue(withIdentifier: "toResultView", sender: nil)
     }
-    
     
     @IBAction func back(_ sender: Any) {
         //前に戻った証
@@ -117,14 +116,11 @@ class CreateViewController: UIViewController {
         
     }
     
-    func toResultView() {
-        performSegue(withIdentifier: "toResultView", sender: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let resultView = segue.destination as! ResultViewController
-        resultView.startPoint = self.startPoint
-        resultView.endPoint = self.endPoint
+        if segue.identifier == "toResultView" {
+            let resultView = segue.destination as!ResultViewController
+            resultView.startPoint = self.startPoint
+            resultView.endPoint = self.endPoint
+        }
     }
-    
 }

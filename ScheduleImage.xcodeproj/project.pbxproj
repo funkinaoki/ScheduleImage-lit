@@ -29,6 +29,7 @@
 		CCE205C425F1176800EA7E83 /* OneDayPlanCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCE205C325F1176800EA7E83 /* OneDayPlanCustomView.xib */; };
 		CCE205CC25F1179F00EA7E83 /* OneDayPlanCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE205CB25F1179F00EA7E83 /* OneDayPlanCustomView.swift */; };
 		CCE6671925F8ADAB00F896FC /* DateDifferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE6671825F8ADAB00F896FC /* DateDifferences.swift */; };
+		CCE6672125F907C400F896FC /* EditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE6672025F907C400F896FC /* EditScheduleViewController.swift */; };
 		CCEBACF325EA3F3B0028BAD5 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */; };
 		CCEBACF425EA3F3B0028BAD5 /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */; };
 		CCEBACFA25EA42B70028BAD5 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBACF925EA42B70028BAD5 /* Schedule.swift */; };
@@ -84,6 +85,7 @@
 		CCE205C325F1176800EA7E83 /* OneDayPlanCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneDayPlanCustomView.xib; sourceTree = "<group>"; };
 		CCE205CB25F1179F00EA7E83 /* OneDayPlanCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayPlanCustomView.swift; sourceTree = "<group>"; };
 		CCE6671825F8ADAB00F896FC /* DateDifferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferences.swift; sourceTree = "<group>"; };
+		CCE6672025F907C400F896FC /* EditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleViewController.swift; sourceTree = "<group>"; };
 		CCEBACF125EA3F3B0028BAD5 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
 		CCEBACF225EA3F3B0028BAD5 /* ScheduleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
 		CCEBACF925EA42B70028BAD5 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				CCEBAD0125EA6BBB0028BAD5 /* ResultViewController.swift */,
 				CCAA029025EBA21400993740 /* CreatePlanViewController.swift */,
 				CCAA029525EBB61F00993740 /* ResultPlanViewController.swift */,
+				CCE6672025F907C400F896FC /* EditScheduleViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				CC4A011325E901D0009D1AC9 /* ViewController.swift in Sources */,
 				CCAA029625EBB61F00993740 /* ResultPlanViewController.swift in Sources */,
 				CCE205CC25F1179F00EA7E83 /* OneDayPlanCustomView.swift in Sources */,
+				CCE6672125F907C400F896FC /* EditScheduleViewController.swift in Sources */,
 				CC4A011A25E901E7009D1AC9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,7 +549,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y243Z9JSGV;
+				DEVELOPMENT_TEAM = S9MLQ4BYN9;
 				INFOPLIST_FILE = ScheduleImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,7 +568,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y243Z9JSGV;
+				DEVELOPMENT_TEAM = S9MLQ4BYN9;
 				INFOPLIST_FILE = ScheduleImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
