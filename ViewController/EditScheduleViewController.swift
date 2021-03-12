@@ -52,6 +52,7 @@ class EditScheduleViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func startButton(_ sender: Any) {
         datePicker.date = startPoint
+        datePicker.minimumDate = nil
         datePicker.maximumDate = Calendar.current.date(byAdding: .day, value: -1, to: endPoint)!
         datePicker.isHidden = false
         startOrEnd = true
@@ -60,6 +61,7 @@ class EditScheduleViewController: UIViewController, UITextFieldDelegate {
     @IBAction func endButton(_ sender: Any) {
         datePicker.date = endPoint
         datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: startPoint)!
+        datePicker.maximumDate = nil
         datePicker.isHidden = false
         startOrEnd = false
     }

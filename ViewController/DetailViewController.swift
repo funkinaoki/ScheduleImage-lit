@@ -44,6 +44,8 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
     var alreadyDays: [Date] = []
     var planHeight: CGFloat!
     
+    var nowRotation: Bool!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,18 +75,20 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
                                                selector: #selector(orientationDidChange),
                                                name:UIDevice.orientationDidChangeNotification,
                                                object:nil)
-        
+
         switch UIDevice.current.orientation {
-        case .landscapeLeft:
+        case .landscapeLeft, .landscapeRight, .faceUp:
+            nowRotation = false
             saveandShare.isHidden = true
             plus.isHidden = true
-        case .landscapeRight:
-            saveandShare.isHidden = true
-            plus.isHidden = true
+        case .portrait:
+            nowRotation = true
         default:
-            print("tate")
+            nowRotation = true
         }
         
+        print(UIDevice.current.orientation.isFlat)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,6 +96,9 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
             let createPlanView = segue.destination as! CreatePlanViewController
             createPlanView.detailSchedule = detailSchedule
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
     
 //    //これやると遅れてUIが再描画される
@@ -114,24 +121,25 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
 //        }
 //    }
     
-    //一方でこちらはその場で描画してくれるが、真っ直ぐ奥とか色々検知されてしまい、ロードがかかってしまう。
+//    一方でこちらはその場で描画してくれるが、真っ直ぐ奥とか色々検知されてしまい、ロードがかかってしまう。
     @objc func orientationDidChange() {
         // 端末の向きを判定
         switch UIDevice.current.orientation {
-        case .portrait:
-            print("正面")
-            updateUI()
-            saveandShare.isHidden = false
-            plus.isHidden = false
         // 縦の場合（ホームボタンが下に来る向き）
-        case .landscapeLeft:
-            updateUI()
-            saveandShare.isHidden = true
-            plus.isHidden = true
-        case .landscapeRight:
-            updateUI()
-            saveandShare.isHidden = true
-            plus.isHidden = true
+        case .landscapeLeft, .landscapeRight:
+            if nowRotation == true {
+                updateUI()
+                saveandShare.isHidden = true
+                plus.isHidden = true
+                nowRotation = false
+            }
+        case .portrait:
+            if nowRotation == false {
+                updateUI()
+                saveandShare.isHidden = false
+                plus.isHidden = false
+                nowRotation = true
+            }
         default:
             break
         }
