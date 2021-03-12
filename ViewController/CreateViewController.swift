@@ -8,6 +8,7 @@
 import UIKit
 
 class CreateViewController: UIViewController, CreateScheduleViewDelegate {
+    
 
     @IBOutlet weak var discription: UILabel!
     @IBOutlet weak var label: UILabel!
@@ -102,7 +103,6 @@ class CreateViewController: UIViewController, CreateScheduleViewDelegate {
             self.backAndNextButton.isHidden = true
         })
         
-        
         //説明文変える
         discription.text = "今から作成する\nスケジュールの開始日を選択してください。"
         //ラベルリセット
@@ -111,7 +111,6 @@ class CreateViewController: UIViewController, CreateScheduleViewDelegate {
         datePicker.date = startPoint
         //datePickerの最小値をリセット
         datePicker.minimumDate = nil
-        
         
     }
     
@@ -151,6 +150,5 @@ class CreateViewController: UIViewController, CreateScheduleViewDelegate {
         
         let UINavigationController = self.tabBarController?.viewControllers?[0];
         self.tabBarController?.selectedViewController = UINavigationController;
-        
     }
 }

@@ -68,5 +68,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>スケジュールの画像を保存します。</string>
 </dict>
 </plist>

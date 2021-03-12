@@ -1,0 +1,132 @@
+
+/* Class = "UITabBarItem"; title = "作成"; ObjectID = "1Me-cO-6S6"; */
+"1Me-cO-6S6.title" = "作成";
+
+/* Class = "UILabel"; text = "今から作成する\nスケジュールの開始日を選択してください。"; ObjectID = "31k-P4-3WP"; */
+"31k-P4-3WP.text" = "今から作成する\nスケジュールの開始日を選択してください。";
+
+/* Class = "UIButton"; normalTitle = "予定を追加"; ObjectID = "6uD-lo-mU8"; */
+"6uD-lo-mU8.normalTitle" = "予定を追加";
+
+/* Class = "UIButton"; normalTitle = "始める"; ObjectID = "78Z-Y7-ftj"; */
+"78Z-Y7-ftj.normalTitle" = "始める";
+
+/* Class = "UIButton"; normalTitle = "2020/20/20"; ObjectID = "7Yq-ut-LkN"; */
+"7Yq-ut-LkN.normalTitle" = "2020/20/20";
+
+/* Class = "UIButton"; normalTitle = "完了"; ObjectID = "9ZJ-8f-h08"; */
+"9ZJ-8f-h08.normalTitle" = "完了";
+
+/* Class = "UIBarButtonItem"; title = "編集"; ObjectID = "9it-AR-uyw"; */
+"9it-AR-uyw.title" = "編集";
+
+/* Class = "UINavigationItem"; title = "スケジュール作成"; ObjectID = "Dkm-ps-DPq"; */
+"Dkm-ps-DPq.title" = "スケジュール作成";
+
+/* Class = "UIButton"; normalTitle = "作成"; ObjectID = "EAz-Ki-XAc"; */
+"EAz-Ki-XAc.normalTitle" = "作成";
+
+/* Class = "UIButton"; normalTitle = "戻る"; ObjectID = "GC1-ut-l90"; */
+"GC1-ut-l90.normalTitle" = "戻る";
+
+/* Class = "UILabel"; text = "2021/02/17"; ObjectID = "GDp-45-zeR"; */
+"GDp-45-zeR.text" = "2021/02/17";
+
+/* Class = "UILabel"; text = "2021/02/17"; ObjectID = "I0v-Bz-AM1"; */
+"I0v-Bz-AM1.text" = "2021/02/17";
+
+/* Class = "UIButton"; normalTitle = "戻る"; ObjectID = "I7M-Pj-OEB"; */
+"I7M-Pj-OEB.normalTitle" = "戻る";
+
+/* Class = "UILabel"; text = "この期間での予定を作成いたします。\nタイトルは何に致しましょうか。"; ObjectID = "Ia4-eU-G6r"; */
+"Ia4-eU-G6r.text" = "この期間での予定を作成いたします。\nタイトルは何に致しましょうか。";
+
+/* Class = "UIButton"; normalTitle = "予定を保存"; ObjectID = "IrC-uX-S0d"; */
+"IrC-uX-S0d.normalTitle" = "予定を保存";
+
+/* Class = "UITabBarItem"; title = "設定"; ObjectID = "KbX-x4-Xqu"; */
+"KbX-x4-Xqu.title" = "設定";
+
+/* Class = "UILabel"; text = "この期間でのスケジュールを作成いたします。\nタイトルは何に致しますか。"; ObjectID = "PxG-dP-FMN"; */
+"PxG-dP-FMN.text" = "この期間でのスケジュールを作成いたします。\nタイトルは何に致しますか。";
+
+/* Class = "UIButton"; normalTitle = "次へ"; ObjectID = "Qgn-AF-Hbm"; */
+"Qgn-AF-Hbm.normalTitle" = "次へ";
+
+/* Class = "UIButton"; normalTitle = "2020/20/20"; ObjectID = "RCD-TH-g6K"; */
+"RCD-TH-g6K.normalTitle" = "2020/20/20";
+
+/* Class = "UINavigationItem"; title = "ホーム"; ObjectID = "TRK-Gh-EuL"; */
+"TRK-Gh-EuL.title" = "ホーム";
+
+/* Class = "UILabel"; text = "2021/02/17"; ObjectID = "Tru-kc-hBf"; */
+"Tru-kc-hBf.text" = "2021/02/17";
+
+/* Class = "UIButton"; normalTitle = "作成"; ObjectID = "Whl-st-oiG"; */
+"Whl-st-oiG.normalTitle" = "作成";
+
+/* Class = "UILabel"; text = "2020\n10/10"; ObjectID = "ZEg-9y-CcU"; */
+"ZEg-9y-CcU.text" = "2020\n10/10";
+
+/* Class = "UIButton"; normalTitle = "完了"; ObjectID = "ZI8-2m-fvd"; */
+"ZI8-2m-fvd.normalTitle" = "完了";
+
+/* Class = "UIButton"; normalTitle = "予定を削除"; ObjectID = "aVo-GU-ZdH"; */
+"aVo-GU-ZdH.normalTitle" = "予定を削除";
+
+/* Class = "UILabel"; text = "2020\n10/10"; ObjectID = "cR5-Ri-TmV"; */
+"cR5-Ri-TmV.text" = "2020\n10/10";
+
+/* Class = "UINavigationItem"; title = "設定"; ObjectID = "dpt-G4-g0R"; */
+"dpt-G4-g0R.title" = "設定";
+
+/* Class = "UITabBarItem"; title = "ホーム"; ObjectID = "dtt-5I-VlL"; */
+"dtt-5I-VlL.title" = "ホーム";
+
+/* Class = "UINavigationItem"; title = "ホーム"; ObjectID = "fde-Qr-rgL"; */
+"fde-Qr-rgL.title" = "ホーム";
+
+/* Class = "UILabel"; text = "　"; ObjectID = "feR-54-5lO"; */
+"feR-54-5lO.text" = "　";
+
+/* Class = "UIButton"; normalTitle = "予定を削除"; ObjectID = "fs0-2u-8qh"; */
+"fs0-2u-8qh.normalTitle" = "予定を削除";
+
+/* Class = "UIButton"; normalTitle = "2020/20/20"; ObjectID = "gv8-BE-Ujo"; */
+"gv8-BE-Ujo.normalTitle" = "2020/20/20";
+
+/* Class = "UINavigationItem"; title = "TOP"; ObjectID = "hMz-eK-s2s"; */
+"hMz-eK-s2s.title" = "TOP";
+
+/* Class = "UILabel"; text = "2021/02/17"; ObjectID = "jFP-El-Xvy"; */
+"jFP-El-Xvy.text" = "2021/02/17";
+
+/* Class = "UINavigationItem"; title = "2020/20/20-2020/20/20"; ObjectID = "nap-Hq-jvv"; */
+"nap-Hq-jvv.title" = "2020/20/20-2020/20/20";
+
+/* Class = "UILabel"; text = "予定の開始日を選択してください。"; ObjectID = "q9f-I8-duc"; */
+"q9f-I8-duc.text" = "予定の開始日を選択してください。";
+
+/* Class = "UIButton"; normalTitle = "2020/20/20"; ObjectID = "slx-Rf-CuN"; */
+"slx-Rf-CuN.normalTitle" = "2020/20/20";
+
+/* Class = "UIButton"; normalTitle = "保存・共有"; ObjectID = "tNR-fv-Nwc"; */
+"tNR-fv-Nwc.normalTitle" = "保存・共有";
+
+/* Class = "UIButton"; normalTitle = "次へ"; ObjectID = "ufy-TD-wTZ"; */
+"ufy-TD-wTZ.normalTitle" = "次へ";
+
+/* Class = "UIButton"; normalTitle = "予定を保存"; ObjectID = "wdn-5j-81R"; */
+"wdn-5j-81R.normalTitle" = "予定を保存";
+
+/* Class = "UINavigationItem"; title = "TOP"; ObjectID = "yH0-tX-jLe"; */
+"yH0-tX-jLe.title" = "TOP";
+
+/* Class = "UILabel"; text = "　"; ObjectID = "yWR-a6-MVr"; */
+"yWR-a6-MVr.text" = "　";
+
+/* Class = "UIButton"; normalTitle = "戻る"; ObjectID = "ydY-BJ-4Sc"; */
+"ydY-BJ-4Sc.normalTitle" = "戻る";
+
+/* Class = "UIButton"; normalTitle = "戻る"; ObjectID = "ztT-Th-ziU"; */
+"ztT-Th-ziU.normalTitle" = "戻る";

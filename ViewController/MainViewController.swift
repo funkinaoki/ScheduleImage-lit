@@ -25,34 +25,32 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(UINib(nibName: "ScheduleViewCell", bundle: nil), forCellReuseIdentifier: "ScheduleViewCell")
         tableView.allowsSelectionDuringEditing = true
         
-        //初期アニメーション
-        image.frame = CGRect(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 160, width: 50, height: 60)
+        //アニメーションの部品
+        image.frame = CGRect(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 152, width: 50, height: 60)
         image.tintColor = UIColor.black
         
-        text.text = "カレンダーを追加してください。"
+        text.text = "スケジュールを追加してください。"
         text.textColor =  UIColor.black
         text.frame.size = CGSize(width: 300, height: 100)
         text.textAlignment = NSTextAlignment.center
-        text.center = CGPoint(x: self.view.frame.width / 2 , y: self.view.frame.height - 170)
+        text.center = CGPoint(x: self.view.frame.width / 2 , y: self.view.frame.height - 160)
         
         self.view.addSubview(image) // ラベルの追加
         self.view.addSubview(text)
+        
         animateArrow()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+    
         database = Database()
         currentSchedules = database.schedules
         tableView.reloadData()
-        
-        super.setEditing(false, animated: true)
         tableView.setEditing(false, animated: true)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "編集", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editButton))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-        
         
         if currentSchedules.count == 0 {
             print("true")
@@ -65,7 +63,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentSchedules.count
     }
@@ -74,7 +71,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleViewCell", for: indexPath) as! ScheduleViewCell
         
         cell.setCell(schedule: currentSchedules[indexPath.row])
-
         // 選択された背景色を白に設定
         let cellSelectedBgView = UIView()
         cellSelectedBgView.backgroundColor = UIColor.lightGray
@@ -90,14 +86,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             performSegue(withIdentifier: "toDetailView", sender: nil)
         }
-
     }
     
     //並び替え
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         let schedule = currentSchedules[sourceIndexPath.row]
-        //database
         schedule.changeOrder(destinationIndex: destinationIndexPath.row)
         
         currentSchedules.remove(at: sourceIndexPath.row)
@@ -118,18 +112,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         for (n,_) in willDeletePlan.enumerated() {
             willDeletePlan[n].delete()
         }
-        
         //ローカル削除
         currentSchedules.remove(at: indexPath.row)
-        
         //見た目削除
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        //ローカル変数更新
-        currentSchedules = database.schedules
-        
+        //アニメーション
         viewWillAppear(true)
     }
+    
     
     //削除ラベルのタイトルを変える
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
@@ -152,8 +142,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailView" {
             let detailView = segue.destination as! DetailViewController
@@ -165,20 +153,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             detailView.detailSchedule = detailSchedule
         }
     }
+    func animateArrow() {
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: [.repeat,.autoreverse] , animations: {
+            self.image.center.y += 10.0
+            }, completion: { finished in
+                self.animateArrow()
+        })
+    }
     
     //プロトコルポップアップはviewwillappear呼ばれないから
     func viewDidDismiss() {
         viewWillAppear(true)
-        print("ok")
     }
-    
-    func animateArrow() {
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
-            self.image.center.y += 20.0
-            }, completion: { finished in
-                self.image.center.y -= 20.0
-                self.animateArrow()
-        })
-    }
-
 }

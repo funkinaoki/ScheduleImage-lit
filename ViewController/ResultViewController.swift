@@ -38,11 +38,14 @@ class ResultViewController: UIViewController, UITextFieldDelegate {
                                        startPoint: DateDifferences.roundDate(startPoint, calendar: calendar),
                                        endPoint: DateDifferences.roundDate(endPoint, calendar: calendar))
             newSchedule.save()
+            nameTextField.endEditing(true)
             //一つ前の画面に戻る
-            self.navigationController?.popToRootViewController(animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
             
-            //一つ前の画面で色々初期化。遅延させないと上のやつの処理が終わらない
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
+            //一つ前の画面で色々初期化 & タブを移行。遅延させないと上のやつの処理が終わらない
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
                 self.delegate?.goBack()
             }
 

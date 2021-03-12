@@ -13,14 +13,16 @@ protocol PlanCustomViewTransitionDelegate {
 
 //planをeditして保存した際に、ポップアップのためviewdidappearが呼ばれないため。
 protocol EditPlanProtocol {
-    func viewDidDismiss()
+    func updateUI()
 }
 
 //スケジュールを作成してから真ん中のタブに再び戻ると、secondDisplayがtrueなので、falseに変更するため。
+//真ん中のタブに行くため
 protocol CreateScheduleViewDelegate {
     func goBack()
 }
 
+//EditScheduleはポップアップウィンドウなため、
 protocol EditScheduleProtocol {
     func viewDidDismiss()
 }

@@ -64,7 +64,25 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
   
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.setPlans()
-
+        }
+        
+        // 回転の検知を開始
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        // 回転時にセレクタのメソッドを実行する
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(orientationDidChange),
+                                               name:UIDevice.orientationDidChangeNotification,
+                                               object:nil)
+        
+        switch UIDevice.current.orientation {
+        case .landscapeLeft:
+            saveandShare.isHidden = true
+            plus.isHidden = true
+        case .landscapeRight:
+            saveandShare.isHidden = true
+            plus.isHidden = true
+        default:
+            print("tate")
         }
         
     }
@@ -76,11 +94,104 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
         }
     }
     
-    @IBAction func saveAndShare(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let planDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController")
-        self.present(planDetailViewController, animated: true, completion: nil)
+//    //これやると遅れてUIが再描画される
+//    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+//        switch UIDevice.current.orientation{
+//        case .portrait:
+//            updateUI()
+//            saveandShare.isHidden = false
+//            plus.isHidden = false
+//        case .landscapeLeft:
+//            updateUI()
+//            saveandShare.isHidden = true
+//            plus.isHidden = true
+//        case .landscapeRight:
+//            updateUI()
+//            saveandShare.isHidden = true
+//            plus.isHidden = true
+//        default:
+//            print("defaults")
+//        }
+//    }
+    
+    //一方でこちらはその場で描画してくれるが、真っ直ぐ奥とか色々検知されてしまい、ロードがかかってしまう。
+    @objc func orientationDidChange() {
+        // 端末の向きを判定
+        switch UIDevice.current.orientation {
+        case .portrait:
+            print("正面")
+            updateUI()
+            saveandShare.isHidden = false
+            plus.isHidden = false
+        // 縦の場合（ホームボタンが下に来る向き）
+        case .landscapeLeft:
+            updateUI()
+            saveandShare.isHidden = true
+            plus.isHidden = true
+        case .landscapeRight:
+            updateUI()
+            saveandShare.isHidden = true
+            plus.isHidden = true
+        default:
+            break
+        }
     }
+    
+    
+    @IBAction func saveAndShare(_ sender: Any) {
+        let rect = CGRect(x: 0, y: startPoint.frame.minY - 10 , width: self.view.bounds.width, height: self.view.bounds.height/2 -  startPoint.frame.minY + CGFloat(floorDays.count) * 30 + 10)
+        // 共有する項目
+        let shareImage = toImage(target: rect)
+        
+        let activityItems = [shareImage] as [Any]
+
+        // 初期化処理
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+        // 使用しないアクティビティタイプ
+        let excludedActivityTypes = [
+            UIActivity.ActivityType.assignToContact
+        ]
+
+        activityVC.excludedActivityTypes = excludedActivityTypes
+        
+        //完了時のアクション
+        activityVC.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
+
+            guard completed else { return }
+
+            switch activityType {
+            case UIActivity.ActivityType.saveToCameraRoll:
+                //カメラロールに保存してからの処理
+                let alert: UIAlertController = UIAlertController(title:"保存", message: "カメラロールに保存しました", preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                let okAction: UIAlertAction = UIAlertAction(title: "確認", style: UIAlertAction.Style.cancel)
+                alert.addAction(okAction)
+            default:
+                break
+            }
+        }
+
+        // UIActivityViewControllerを表示
+        self.present(activityVC, animated: true, completion: nil)
+        
+    }
+    
+    func toImage(target: CGRect) -> UIImage { // ★target引数追加
+        UIGraphicsBeginImageContextWithOptions(target.size, false, 0.0)
+        
+        let context = UIGraphicsGetCurrentContext()
+
+        context!.translateBy(x: -target.minX, y: -target.minY) // ★一行追加
+        self.view.layer.render(in: context!)
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+
+        return image!
+    }
+    
     
     func setPlans () {
         //１日イベントとそうじゃないのは違うロジックで記述します。
@@ -173,7 +284,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
                 self.view.addSubview(startPointPlanLabel) // ラベルの追加
                 alreadyDays.append(plansDifferentDate[n].startPoint) //自分の追加
                 
-            //dotの追加
+                //dotの追加
                 let startPointDot = UIImageView(image: UIImage(systemName: "circle.fill"))
                 startPointDot.tintColor = UIColor.black
                 
@@ -195,7 +306,6 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
                 endPointPlanLabel.text = "\(DateUtils.stringFromDate(date:  plansDifferentDate[n].endPoint!, format: "MM/dd"))" //
                 endPointPlanLabel.textColor = UIColor.black // テキストカラーの設定
                 endPointPlanLabel.font = UIFont(name: "HiraKakuProN-W6", size: 10) // フォントの設定
-    //          startPointPlanLabel.backgroundColor = UIColor.lightGray
                 
                 //x座標をハンコ分下げなければならないので、自分のサイズのの半分を計算します。= rect.width / 2
                 let frameEnd = CGSize(width: 200, height: 200)
@@ -245,7 +355,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
             let rectOneDay = customView.sizeThatFits(frameOneDay)
             
             customView.frame = CGRect(x: CGFloat(startPointLength) + scheduleView.frame.minX - rectOneDay.width/2,
-                                      y: self.view.frame.height/2 - 50,
+                                      y: self.view.frame.height/2 - 45,
                                       width: rectOneDay.width,
                                       height: rectOneDay.height)
         
@@ -287,11 +397,8 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
     }
     
     func getDaysArray(startPoint:Date, endPoint:Date, max:Int) -> [String] {
-
         var result:[String] = []
-
         let endStr = DateUtils.stringFromDate(date: endPoint, format: "yyyy/MM/dd")
-
         var components = DateComponents()
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
 
@@ -316,14 +423,13 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
         let planDetailViewController =  storyboard.instantiateViewController(withIdentifier: "PlanDetailViewController") as! PlanDetailViewController
         planDetailViewController.plan = plan
         planDetailViewController.detailSchedule = detailSchedule
-        
         planDetailViewController.delegate = self
         
         self.present(planDetailViewController, animated: true, completion: nil)
     }
     
     //delegate
-    func viewDidDismiss() {
+    func updateUI() {
         plansSameDate.removeAll()
         plansDifferentDate.removeAll()
         alreadyDays.removeAll()
@@ -350,7 +456,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
         self.endPoint.text = DateUtils.stringFromDate(date: self.detailSchedule.endPoint, format: "yyyy \n MM/dd")
         self.topLabel.title = self.detailSchedule.name
   
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.setPlans()
         }
 

@@ -34,9 +34,8 @@ class PlanDetailViewController: UIViewController {
         super.viewDidLoad()
         startPointLabel.setTitle(DateUtils.stringFromDate(date: plan.startPoint, format: "yy/MM/dd"), for: .normal)
         endPointLabel.setTitle(DateUtils.stringFromDate(date: plan.endPoint, format: "yy/MM/dd"), for: .normal)
+        
         nameField.text = plan.name
-        
-        
         datePicker.isHidden = true
         startPoint = plan.startPoint
         endPoint = plan.endPoint
@@ -82,7 +81,7 @@ class PlanDetailViewController: UIViewController {
             //schedule
             let willDeletePlan = self.database.plans.first( where: { $0.id == self.plan.id })
             willDeletePlan?.delete()
-            self.delegate?.viewDidDismiss()
+            self.delegate?.updateUI()
             self.dismiss(animated: true, completion: nil)
 
         })
@@ -109,7 +108,7 @@ class PlanDetailViewController: UIViewController {
         plan.distanceDate = Float(DateDifferences.calcDateRemainder(firstDate: endPoint, secondDate: startPoint))
         plan.floor = 0
         plan.save()
-        delegate?.viewDidDismiss()
+        delegate?.updateUI()
         dismiss(animated: true, completion: nil)
         
     }

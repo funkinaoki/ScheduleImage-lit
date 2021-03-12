@@ -27,7 +27,6 @@ class CreatePlanViewController: UIViewController {
     
     var detailSchedule: Schedule!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         topLabel.title = "\(DateUtils.stringFromDate(date: detailSchedule.startPoint!, format: "yyyy/MM/dd") ) - \(DateUtils.stringFromDate(date: detailSchedule.endPoint!, format: "yyyy/MM/dd") )"

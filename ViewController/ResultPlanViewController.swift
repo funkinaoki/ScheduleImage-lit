@@ -52,7 +52,7 @@ class ResultPlanViewController: UIViewController, UITextFieldDelegate {
             let vcA = self.navigationController?.viewControllers[count]
             self.delegate = vcA as? EditPlanProtocol
 
-            delegate?.viewDidDismiss()
+            delegate?.updateUI()
             navigationController?.popToViewController(navigationController!.viewControllers[1], animated: true)
         }
     }
