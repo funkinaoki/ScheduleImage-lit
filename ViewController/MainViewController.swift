@@ -24,16 +24,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.register(UINib(nibName: "ScheduleViewCell", bundle: nil), forCellReuseIdentifier: "ScheduleViewCell")
         tableView.allowsSelectionDuringEditing = true
+//        tableView.estimatedRowHeight = 128
+//        tableView.rowHeight = UITableView.automaticDimension
         
         //アニメーションの部品
-        image.frame = CGRect(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 152, width: 50, height: 60)
+        
         image.tintColor = UIColor.black
+        image.frame.size = CGSize(width: 50, height: 60)
+        image.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 123)
         
         text.text = "スケジュールを追加してください。"
         text.textColor =  UIColor.black
-        text.frame.size = CGSize(width: 300, height: 100)
         text.textAlignment = NSTextAlignment.center
-        text.center = CGPoint(x: self.view.frame.width / 2 , y: self.view.frame.height - 160)
+        text.frame.size = CGSize(width: 300, height: 100)
+        text.center = CGPoint(x: self.view.frame.width / 2 + 10, y: self.view.frame.height - 160)
+        
         
         self.view.addSubview(image) // ラベルの追加
         self.view.addSubview(text)
@@ -48,10 +53,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         database = Database()
         currentSchedules = database.schedules
         tableView.reloadData()
+        super.setEditing(false, animated: true)
         tableView.setEditing(false, animated: true)
+        print(isEditing)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "編集", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editButton))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-        
         if currentSchedules.count == 0 {
             print("true")
             image.alpha = 1.0

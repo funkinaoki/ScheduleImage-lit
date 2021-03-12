@@ -85,10 +85,7 @@ class PlanDetailViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
 
         })
-        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
-            // ボタンが押された時の処理を書く（クロージャ実装）
-            (action: UIAlertAction!) -> Void in
-        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel)
         
         alert.addAction(cancelAction)
         alert.addAction(defaultAction)

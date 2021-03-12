@@ -42,7 +42,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
     
     var floorDays: [[String]] = [] //変数の中に、階層⇨alldate //そのフロアにおける埋まってる日付
     var alreadyDays: [Date] = []
-//    let planCustom = PlanCustomView()
+    var planHeight: CGFloat!
     
     
     override func viewDidLoad() {
@@ -139,7 +139,14 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
     
     
     @IBAction func saveAndShare(_ sender: Any) {
-        let rect = CGRect(x: 0, y: startPoint.frame.minY - 10 , width: self.view.bounds.width, height: self.view.bounds.height/2 -  startPoint.frame.minY + CGFloat(floorDays.count) * 30 + 10)
+        //planHeightの定義
+        if floorDays.count == 0 {
+            planHeight = 30
+        } else {
+            planHeight = CGFloat(floorDays.count * 30)
+        }
+        
+        let rect = CGRect( x: 0, y: startPoint.frame.minY - 15 , width: self.view.bounds.width, height: self.view.bounds.height/2 -  startPoint.frame.minY + planHeight + 20 )
         // 共有する項目
         let shareImage = toImage(target: rect)
         
@@ -251,6 +258,7 @@ class DetailViewController: UIViewController, PlanCustomViewTransitionDelegate, 
             startPointLength = Float(scheduleView.frame.width) * startPointRatio
             
                 
+            //customView
             let customView = Bundle.main.loadNibNamed("PlanCustomView", owner: self, options: nil)?.first as! PlanCustomView
             customView.delegate = self
             

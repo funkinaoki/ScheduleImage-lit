@@ -47,11 +47,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Rn-S1-kan">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Rn-S1-kan">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.15841012269999999" green="0.21442090850000001" blue="0.20717202430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <color key="sectionIndexColor" red="0.27450981740000002" green="0.36470589040000001" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.52941179279999995" green="0.37647059560000001" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -236,27 +236,6 @@
             </objects>
             <point key="canvasLocation" x="699" y="1570"/>
         </scene>
-        <!--設定-->
-        <scene sceneID="3yX-wf-uQU">
-            <objects>
-                <navigationController id="86H-WH-0PH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="KbX-x4-Xqu"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ukO-QG-1OA">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.15841012269999999" green="0.21442090850000001" blue="0.20717202430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="iWn-4M-hpT" kind="relationship" relationship="rootViewController" id="NNn-OO-aJU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="awT-K3-H5A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-142" y="1570"/>
-        </scene>
         <!--ホーム-->
         <scene sceneID="V6v-f5-fr5">
             <objects>
@@ -274,7 +253,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0UZ-4e-H5g">
-                                <rect key="frame" x="28" y="446.5" width="358" height="3"/>
+                                <rect key="frame" x="27" y="446.5" width="360" height="3"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="xcd-M0-6AC"/>
@@ -294,8 +273,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNR-fv-Nwc">
                                         <rect key="frame" x="0.0" y="0.0" width="115" height="26"/>
                                         <color key="tintColor" red="0.15841012269999999" green="0.21442090850000001" blue="0.20717202430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <inset key="titleEdgeInsets" minX="-23" minY="34" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="46" minY="-20" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="-19" minY="34" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-20" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="保存・共有" image="square.and.arrow.up" catalog="system">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -308,7 +287,7 @@
                                         <rect key="frame" x="115" y="0.0" width="113.5" height="26"/>
                                         <color key="tintColor" red="0.15841012269999999" green="0.21442090850000001" blue="0.20717202430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <inset key="titleEdgeInsets" minX="-19" minY="32" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="46" minY="-20" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-20" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="予定を追加" image="plus" catalog="system">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -328,7 +307,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smallcircle.fill.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SL4-2C-1S0">
-                                <rect key="frame" x="384" y="441" width="15" height="14"/>
+                                <rect key="frame" x="385" y="441" width="15" height="14"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="0rw-62-7Dh"/>
@@ -339,15 +318,15 @@
                         <viewLayoutGuide key="safeArea" id="x5u-Fz-ZCP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="SL4-2C-1S0" secondAttribute="trailing" constant="15" id="6bq-TG-0eA"/>
+                            <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="SL4-2C-1S0" secondAttribute="trailing" constant="14" id="6bq-TG-0eA"/>
                             <constraint firstItem="cR5-Ri-TmV" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="4" id="BYp-RX-K13"/>
                             <constraint firstItem="ZEg-9y-CcU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cR5-Ri-TmV" secondAttribute="trailing" constant="8" symbolic="YES" id="O8E-An-vUN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0UZ-4e-H5g" secondAttribute="trailing" constant="8" id="Qwi-aO-iVl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0UZ-4e-H5g" secondAttribute="trailing" constant="7" id="Qwi-aO-iVl"/>
                             <constraint firstItem="1l8-CC-wp8" firstAttribute="leading" secondItem="x5u-Fz-ZCP" secondAttribute="leading" constant="14" id="SNR-YF-4NE"/>
                             <constraint firstItem="1l8-CC-wp8" firstAttribute="centerY" secondItem="781-az-zvo" secondAttribute="centerY" id="VGt-fi-Rlb"/>
                             <constraint firstItem="0UZ-4e-H5g" firstAttribute="top" secondItem="ZEg-9y-CcU" secondAttribute="bottom" constant="8" id="Vbd-Xy-frD"/>
                             <constraint firstItem="0UZ-4e-H5g" firstAttribute="top" secondItem="cR5-Ri-TmV" secondAttribute="bottom" constant="8" id="gXw-G8-wFx"/>
-                            <constraint firstItem="0UZ-4e-H5g" firstAttribute="leading" secondItem="781-az-zvo" secondAttribute="leadingMargin" constant="8" id="hwW-NQ-Jsx"/>
+                            <constraint firstItem="0UZ-4e-H5g" firstAttribute="leading" secondItem="781-az-zvo" secondAttribute="leadingMargin" constant="7" id="hwW-NQ-Jsx"/>
                             <constraint firstItem="x5u-Fz-ZCP" firstAttribute="bottom" secondItem="X5C-tP-sVb" secondAttribute="bottom" constant="59" id="jpE-Kp-H3Z"/>
                             <constraint firstItem="X5C-tP-sVb" firstAttribute="centerX" secondItem="781-az-zvo" secondAttribute="centerX" id="mhk-Fz-Bpv"/>
                             <constraint firstItem="x5u-Fz-ZCP" firstAttribute="trailing" secondItem="ZEg-9y-CcU" secondAttribute="trailing" constant="4" id="rUA-qR-Pzl"/>
@@ -705,7 +684,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfq-tF-73D">
-                                <rect key="frame" x="48.5" y="446.5" width="317" height="3"/>
+                                <rect key="frame" x="50" y="446.5" width="314" height="3"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="vXV-Bb-F9N"/>
@@ -739,10 +718,9 @@
                             <constraint firstItem="Nfq-tF-73D" firstAttribute="centerY" secondItem="pvr-4h-f8G" secondAttribute="centerY" id="VdE-lo-VfI"/>
                             <constraint firstItem="Csu-Yl-ZHA" firstAttribute="centerY" secondItem="pvr-4h-f8G" secondAttribute="centerY" id="Yzn-cG-YyS"/>
                             <constraint firstItem="2hg-Z5-5zQ" firstAttribute="centerY" secondItem="pvr-4h-f8G" secondAttribute="centerY" id="bEp-qq-3LN"/>
-                            <constraint firstItem="Nfq-tF-73D" firstAttribute="centerX" secondItem="pvr-4h-f8G" secondAttribute="centerX" id="e8V-NS-3aT"/>
-                            <constraint firstItem="Nfq-tF-73D" firstAttribute="leading" secondItem="pvr-4h-f8G" secondAttribute="leadingMargin" constant="28.5" id="iy2-96-TzD"/>
+                            <constraint firstItem="Nfq-tF-73D" firstAttribute="leading" secondItem="pvr-4h-f8G" secondAttribute="leadingMargin" constant="30" id="iy2-96-TzD"/>
                             <constraint firstItem="2hg-Z5-5zQ" firstAttribute="top" secondItem="GDp-45-zeR" secondAttribute="bottom" constant="8.5" id="jeY-9x-mVm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Nfq-tF-73D" secondAttribute="trailing" constant="28.5" id="lTU-3c-dXP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nfq-tF-73D" secondAttribute="trailing" constant="30" id="lTU-3c-dXP"/>
                             <constraint firstItem="fHZ-Zv-1Lc" firstAttribute="trailing" secondItem="Csu-Yl-ZHA" secondAttribute="trailing" constant="33" id="oIJ-1T-4Oa"/>
                             <constraint firstItem="fHZ-Zv-1Lc" firstAttribute="trailing" secondItem="I0v-Bz-AM1" secondAttribute="trailing" constant="9" id="ocT-hZ-GK2"/>
                             <constraint firstItem="fiT-q2-Kt1" firstAttribute="top" secondItem="Nfq-tF-73D" secondAttribute="bottom" constant="40" id="p2L-89-Qxt"/>
@@ -795,7 +773,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Au4-3Y-6Lf">
-                                <rect key="frame" x="28" y="446.5" width="358" height="3"/>
+                                <rect key="frame" x="27" y="446.5" width="360" height="3"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="jDR-9k-pxi"/>
@@ -808,7 +786,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="116" height="25.5"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="titleEdgeInsets" minX="-19" minY="32" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="46" minY="-20" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-20" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="予定を削除" image="trash.fill" catalog="system">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -820,8 +798,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdn-5j-81R">
                                         <rect key="frame" x="116" y="0.0" width="113.5" height="25.5"/>
                                         <color key="tintColor" red="0.15841012269999999" green="0.21442090850000001" blue="0.20717202430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <inset key="titleEdgeInsets" minX="-23" minY="34" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="46" minY="-20" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="-18" minY="34" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-20" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="予定を保存" image="pencil" catalog="system">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -870,7 +848,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smallcircle.fill.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hD2-sG-Jl0">
-                                <rect key="frame" x="15" y="441" width="15" height="14"/>
+                                <rect key="frame" x="14" y="441" width="15" height="14"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="IuU-Vq-yTZ"/>
@@ -897,16 +875,16 @@
                             <constraint firstItem="3v5-vz-UJF" firstAttribute="trailing" secondItem="7Yq-ut-LkN" secondAttribute="trailing" constant="10" id="5KK-w0-2bP"/>
                             <constraint firstItem="Au4-3Y-6Lf" firstAttribute="top" secondItem="gv8-BE-Ujo" secondAttribute="bottom" constant="10.5" id="8qm-Jd-lg3"/>
                             <constraint firstItem="aOx-1i-A2I" firstAttribute="centerX" secondItem="JjC-Fw-rh1" secondAttribute="centerX" id="GEm-ye-u8I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Au4-3Y-6Lf" secondAttribute="trailing" constant="7" id="IXz-7a-95I"/>
                             <constraint firstItem="NC6-9G-sBD" firstAttribute="centerX" secondItem="JjC-Fw-rh1" secondAttribute="centerX" id="LYd-8C-g8h"/>
                             <constraint firstItem="3v5-vz-UJF" firstAttribute="bottom" secondItem="aOx-1i-A2I" secondAttribute="bottom" constant="80" id="Ljv-8e-gNE"/>
-                            <constraint firstItem="hD2-sG-Jl0" firstAttribute="leading" secondItem="3v5-vz-UJF" secondAttribute="leading" constant="15" id="Nlj-uB-0s7"/>
+                            <constraint firstItem="hD2-sG-Jl0" firstAttribute="leading" secondItem="3v5-vz-UJF" secondAttribute="leading" constant="14" id="Nlj-uB-0s7"/>
                             <constraint firstItem="Au4-3Y-6Lf" firstAttribute="centerY" secondItem="JjC-Fw-rh1" secondAttribute="centerY" id="P9r-ll-WcA"/>
                             <constraint firstItem="Au4-3Y-6Lf" firstAttribute="centerY" secondItem="JjC-Fw-rh1" secondAttribute="centerY" id="Q9g-OO-Oor"/>
-                            <constraint firstAttribute="trailing" secondItem="Au4-3Y-6Lf" secondAttribute="trailing" constant="28" id="SJ0-gD-NRj"/>
                             <constraint firstItem="ubL-Q4-wPu" firstAttribute="centerY" secondItem="JjC-Fw-rh1" secondAttribute="centerY" id="esj-SX-Yg0"/>
                             <constraint firstItem="3v5-vz-UJF" firstAttribute="trailing" secondItem="Twc-vj-KzR" secondAttribute="trailing" id="iKj-78-7tA"/>
                             <constraint firstItem="Au4-3Y-6Lf" firstAttribute="top" secondItem="NC6-9G-sBD" secondAttribute="bottom" constant="175.5" id="ld5-4j-F7K"/>
-                            <constraint firstItem="Au4-3Y-6Lf" firstAttribute="leading" secondItem="JjC-Fw-rh1" secondAttribute="leadingMargin" constant="8" id="mdl-jB-zja"/>
+                            <constraint firstItem="Au4-3Y-6Lf" firstAttribute="leading" secondItem="JjC-Fw-rh1" secondAttribute="leadingMargin" constant="7" id="mdl-jB-zja"/>
                             <constraint firstItem="hD2-sG-Jl0" firstAttribute="centerY" secondItem="JjC-Fw-rh1" secondAttribute="centerY" id="wQE-fl-c6m"/>
                             <constraint firstItem="7Yq-ut-LkN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="gv8-BE-Ujo" secondAttribute="trailing" constant="232" id="xNY-0X-uRn"/>
                         </constraints>
@@ -939,7 +917,6 @@
                     <connections>
                         <segue destination="pk0-S5-Geq" kind="relationship" relationship="viewControllers" id="rp6-dM-pcw"/>
                         <segue destination="xat-Hk-otO" kind="relationship" relationship="viewControllers" id="QQX-En-xbN"/>
-                        <segue destination="86H-WH-0PH" kind="relationship" relationship="viewControllers" id="bcs-qa-cDg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTI-Oi-5W2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -955,7 +932,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ync-e4-ozj">
-                                <rect key="frame" x="26" y="419.5" width="363" height="3"/>
+                                <rect key="frame" x="27" y="419.5" width="360" height="3"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="8di-f8-IzP"/>
@@ -968,7 +945,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="116" height="25.5"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="titleEdgeInsets" minX="-19" minY="32" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="46" minY="-20" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-20" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="予定を削除" image="trash.fill" catalog="system">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -980,8 +957,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrC-uX-S0d">
                                         <rect key="frame" x="116" y="0.0" width="113.5" height="25.5"/>
                                         <color key="tintColor" red="0.15841012269999999" green="0.21442090850000001" blue="0.20717202430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <inset key="titleEdgeInsets" minX="-23" minY="34" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="46" minY="-20" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="-19" minY="34" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="42" minY="-20" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="予定を保存" image="pencil" catalog="system">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -1004,6 +981,9 @@
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slx-Rf-CuN">
                                 <rect key="frame" x="313" y="382" width="81" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="81" id="VwH-Yp-FbZ"/>
+                                </constraints>
                                 <state key="normal" title="2020/20/20">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1013,6 +993,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCD-TH-g6K">
                                 <rect key="frame" x="20" y="379" width="81" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="81" id="IAx-xk-z7v"/>
+                                </constraints>
                                 <state key="normal" title="2020/20/20">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1029,7 +1012,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smallcircle.fill.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cMz-3A-K3Q">
-                                <rect key="frame" x="15" y="414" width="15" height="14"/>
+                                <rect key="frame" x="14" y="414" width="15" height="14"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="5yW-Pu-gaC"/>
@@ -1048,10 +1031,10 @@
                         <viewLayoutGuide key="safeArea" id="UM0-Sj-IUx"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UM0-Sj-IUx" firstAttribute="trailing" secondItem="slx-Rf-CuN" secondAttribute="trailing" constant="20" id="22y-bu-lOf"/>
+                            <constraint firstItem="UM0-Sj-IUx" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="slx-Rf-CuN" secondAttribute="trailing" id="22y-bu-lOf"/>
                             <constraint firstItem="UM0-Sj-IUx" firstAttribute="trailing" secondItem="YVr-3z-OhW" secondAttribute="trailing" constant="14" id="EhC-Au-Whu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ync-e4-ozj" secondAttribute="trailing" constant="5" id="G6C-h6-AqW"/>
-                            <constraint firstItem="cMz-3A-K3Q" firstAttribute="leading" secondItem="UM0-Sj-IUx" secondAttribute="leading" constant="15" id="HP7-JY-azd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ync-e4-ozj" secondAttribute="trailing" constant="7" id="G6C-h6-AqW"/>
+                            <constraint firstItem="cMz-3A-K3Q" firstAttribute="leading" secondItem="UM0-Sj-IUx" secondAttribute="leading" constant="14" id="HP7-JY-azd"/>
                             <constraint firstItem="UM0-Sj-IUx" firstAttribute="trailing" secondItem="5Ur-yj-mqx" secondAttribute="trailing" id="IpC-p2-Ezq"/>
                             <constraint firstItem="5Ur-yj-mqx" firstAttribute="top" secondItem="ync-e4-ozj" secondAttribute="bottom" constant="27.5" id="Izc-aa-NX9"/>
                             <constraint firstItem="YVr-3z-OhW" firstAttribute="centerY" secondItem="4Mu-7u-yGw" secondAttribute="centerY" id="N6Y-96-iOV"/>
@@ -1061,9 +1044,9 @@
                             <constraint firstItem="ync-e4-ozj" firstAttribute="top" secondItem="RCD-TH-g6K" secondAttribute="bottom" constant="10.5" id="d6b-w7-cz2"/>
                             <constraint firstItem="UM0-Sj-IUx" firstAttribute="bottom" secondItem="00v-FO-fq4" secondAttribute="bottom" constant="80" id="fad-kd-p4a"/>
                             <constraint firstItem="RCD-TH-g6K" firstAttribute="leading" secondItem="UM0-Sj-IUx" secondAttribute="leading" constant="20" id="gx4-au-9wF"/>
-                            <constraint firstItem="ync-e4-ozj" firstAttribute="leading" secondItem="4Mu-7u-yGw" secondAttribute="leadingMargin" constant="6" id="oMd-11-XC3"/>
-                            <constraint firstItem="slx-Rf-CuN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="RCD-TH-g6K" secondAttribute="trailing" constant="212" id="q85-Ji-eVx"/>
+                            <constraint firstItem="ync-e4-ozj" firstAttribute="leading" secondItem="4Mu-7u-yGw" secondAttribute="leadingMargin" constant="7" id="oMd-11-XC3"/>
                             <constraint firstItem="ync-e4-ozj" firstAttribute="top" secondItem="47M-uj-jol" secondAttribute="bottom" constant="175.5" id="tPf-YB-lBu"/>
+                            <constraint firstItem="slx-Rf-CuN" firstAttribute="leading" secondItem="RCD-TH-g6K" secondAttribute="trailing" constant="212" id="tVj-ZT-mew"/>
                             <constraint firstItem="ync-e4-ozj" firstAttribute="centerY" secondItem="4Mu-7u-yGw" secondAttribute="centerY" id="vyC-CM-PNI"/>
                             <constraint firstItem="47M-uj-jol" firstAttribute="centerX" secondItem="4Mu-7u-yGw" secondAttribute="centerX" id="w1Z-hW-XeI"/>
                             <constraint firstItem="5Ur-yj-mqx" firstAttribute="leading" secondItem="UM0-Sj-IUx" secondAttribute="leading" id="wEp-Ly-j4Y"/>
@@ -1084,8 +1067,6 @@
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
